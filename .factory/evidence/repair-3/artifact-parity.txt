@@ -1,0 +1,21 @@
+Deployed artifact parity checked 2026-09-05 UTC.
+Implementation: 6584718359bf7ca6daff94c7c3b9ff8126e7c82b
+Origin: https://one-screen-sprint.sociobot.in
+
+MATCH  404.css  e7161952955c3c582070971171dfc0b42b8772d84e3b3ac6153b22e72a94bee7
+MATCH  404.html  586d2bdce96e0343f9c6c66e36bb5fb2e846566c6d3886ee69d7155ff31025b2
+MATCH  apple-touch-icon.png  fea61392a59477f99708d1ded785682fcfac9df6191ee4e2b97616a334fcbeb7
+MATCH  art/one-screen-sprint-social.jpg  b965d5d250137d61ff3843790b24e70c957c04e63197cbdace1c1a18ea8c0e4d
+MATCH  art/race-poster.webp  46a1771e1ec0bd0434ccb5ef2d4ebeb48388d13b8f972eefa610c6887077022e
+MATCH  assets/index-CHrWqm2_.css  efdf8417edc8b2543fd59a0218b5a020497943cce187ac38b7c33fc93a50d545
+MATCH  assets/index-D6JdjjWx.js  fd3bc95a59dfd68720f67c2769cb09b5ee1782ca5467958f230be46addd3cfd9
+MATCH  assets/index-D6JdjjWx.js.map  13b93d58b3b964755d126d767804d658543ba414dc32757e3eacce59a4f8ebb0
+MATCH  favicon.svg  ecb445d154c0ed356e79fb9f6f6624e6506c844cf3d3532c68f39cdcf78adf6a
+MATCH  index.html  f4f6f678316a84efbdddf3987658876cd1c295155d6d40a5e297ca5ae63b62d6
+MATCH  robots.txt  626894012d4696f0ef9badd65164f2654e7e7bb364a0ba028f8c62558b108561
+MATCH  sitemap.xml  83f425a67a82a49d7501c59fb908df82c7a0a8b710bece26872525be0610e33f
+MATCH  sw.js  b39ecf33825d239b33e032aae6b1dfca665901660f5d54dc467368c828b522c7
+
+All 13 deployable files matched by SHA-256. The deployment-only
+staticwebapp.config.json was excluded because the host consumes it as
+configuration rather than serving it as a public file.
