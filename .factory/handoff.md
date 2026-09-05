@@ -7,6 +7,7 @@
 - Deployed implementation SHA: `077fb1c000e62b91022306ddd7fda07c981d184f`
 - Repair documentation (claims, README, demo) SHA:
   `74fbe366f1900a1de7d4c16ed6a8db7253da6acf`
+- Live evidence snapshot SHA: `4592a98707ced32df0d9f54121ff8be15e50af07`
 - Deployment: existing `sf-one-screen-sprint` static app; final deployment ID
   `189e4cb1-a5c7-4b24-9e66-0ceaa93b4edc`
 
