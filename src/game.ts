@@ -1,4 +1,5 @@
 import { RaceAudio } from './audio';
+import { movementEffectFrame, type PaperFleck } from './effects';
 import {
   FIXED_STEP,
   WORLD_HEIGHT,
@@ -171,18 +172,34 @@ export class GameController {
     const scale = Math.min(width / WORLD_WIDTH, height / WORLD_HEIGHT);
     const offsetX = (width - WORLD_WIDTH * scale) / 2;
     const offsetY = (height - WORLD_HEIGHT * scale) / 2;
-    const motionAllowed = this.settings.effects && !this.reducedMotion.matches;
-    const dashActive = this.state.players.some((player) => player.dashTime > 0);
-    const shake = motionAllowed && dashActive ? Math.sin(time * 0.18) * 2.5 * scale : 0;
-    this.context.setTransform(scale, 0, 0, scale, offsetX + shake, offsetY);
+    const effects = movementEffectFrame(
+      this.state.players,
+      this.settings.effects,
+      this.reducedMotion.matches,
+      time,
+    );
+    this.context.setTransform(scale, 0, 0, scale, offsetX + effects.shakeX * scale, offsetY);
     this.context.fillStyle = COLORS.paper;
     this.context.fillRect(-5, 0, WORLD_WIDTH + 10, WORLD_HEIGHT);
 
     this.drawRegistrationMarks();
     this.drawHazards();
     this.drawCourse();
+    this.drawPaperFlecks(effects.flecks);
     this.state.players.forEach((player) => this.drawPlayer(player, alpha));
     this.drawCanvasStatus();
+  }
+
+  private drawPaperFlecks(flecks: PaperFleck[]): void {
+    flecks.forEach((fleck) => {
+      this.context.save();
+      this.context.translate(fleck.x, fleck.y);
+      this.context.rotate(fleck.rotation);
+      this.context.globalAlpha = fleck.opacity;
+      this.context.fillStyle = fleck.playerId === 0 ? COLORS.coral : COLORS.blue;
+      this.context.fillRect(-fleck.width / 2, -fleck.height / 2, fleck.width, fleck.height);
+      this.context.restore();
+    });
   }
 
   private drawRegistrationMarks(): void {

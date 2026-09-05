@@ -56,6 +56,27 @@
     "sandbox": "fresh /demo context; change all settings; reload; assert each saved state"
   },
   {
+    "id": "mute-stops-tones",
+    "claim": "Mute stops the short game tones.",
+    "where": "settings",
+    "test": "npm run test:browser -- --grep=@claim:mute-stops-tones",
+    "sandbox": "two fresh /demo browser contexts with an AudioContext output probe; start one unmuted and one muted round; assert the unmuted start tone emits two oscillator starts and the muted round emits none"
+  },
+  {
+    "id": "movement-effects",
+    "claim": "Movement effects add screen shake and directional paper flecks during a dash, and the setting turns both off.",
+    "where": "settings",
+    "test": "npm run test:unit -- --testNamePattern=@claim:movement-effects",
+    "sandbox": "create a deterministic dashing player; assert nonzero shake and five trailing paper flecks when enabled, then assert both are absent when disabled or reduced motion is active"
+  },
+  {
+    "id": "edge-assist",
+    "claim": "Edge assist jumps automatically near a platform edge.",
+    "where": "settings",
+    "test": "npm run test:unit -- --testNamePattern=@claim:edge-assist",
+    "sandbox": "place matched deterministic players near the same platform edge with no jump input; assert edge assist launches one while the unassisted player stays grounded"
+  },
+  {
     "id": "key-rollover",
     "claim": "Both players can move at the same time from one keyboard.",
     "where": "landing facts, controls, README",

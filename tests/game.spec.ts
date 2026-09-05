@@ -19,6 +19,42 @@ async function racePlayerOne(page: Page): Promise<void> {
   await page.keyboard.up('KeyD');
 }
 
+async function installAudioProbe(page: Page): Promise<void> {
+  await page.addInitScript(() => {
+    const target = window as unknown as { __toneStarts: number; AudioContext: unknown };
+    target.__toneStarts = 0;
+    class AudioContextProbe {
+      state = 'running';
+      currentTime = 0;
+      destination = {};
+
+      createOscillator() {
+        return {
+          type: 'square',
+          frequency: { value: 0 },
+          connect(node: unknown) { return node; },
+          start() { target.__toneStarts += 1; },
+          stop() {},
+        };
+      }
+
+      createGain() {
+        return {
+          gain: {
+            setValueAtTime() {},
+            exponentialRampToValueAtTime() {},
+          },
+          connect(node: unknown) { return node; },
+        };
+      }
+
+      resume() { return Promise.resolve(); }
+      close() { return Promise.resolve(); }
+    }
+    target.AudioContext = AudioContextProbe;
+  });
+}
+
 test('@claim:best-of-five-end @claim:restart-reset @claim:free-no-ads completes a deterministic sample match and resets the next course', async ({ page }) => {
   await page.goto('/demo');
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
@@ -72,6 +108,29 @@ test('@claim:settings-persist saves accessibility and sound settings across relo
   await expect(page.getByRole('checkbox', { name: /Mute sound/ })).toBeChecked();
   await expect(page.getByRole('checkbox', { name: /Movement effects/ })).not.toBeChecked();
   await expect(page.getByRole('checkbox', { name: /Edge assist/ })).toBeChecked();
+});
+
+test('@claim:mute-stops-tones stops game tones while preserving unmuted audio', async ({ browser }) => {
+  const audibleContext = await browser.newContext();
+  const audiblePage = await audibleContext.newPage();
+  await installAudioProbe(audiblePage);
+  await audiblePage.goto('/demo');
+  await audiblePage.getByRole('button', { name: 'Start sample round' }).first().click();
+  await expect(audiblePage.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
+  expect(await audiblePage.evaluate(() => (window as unknown as { __toneStarts: number }).__toneStarts)).toBe(2);
+  await audibleContext.close();
+
+  const mutedContext = await browser.newContext();
+  const mutedPage = await mutedContext.newPage();
+  await installAudioProbe(mutedPage);
+  await mutedPage.goto('/demo');
+  await mutedPage.getByRole('button', { name: 'Settings' }).click();
+  await mutedPage.getByRole('checkbox', { name: /Mute sound/ }).check();
+  await mutedPage.getByRole('button', { name: 'Save settings' }).click();
+  await mutedPage.getByRole('button', { name: 'Start sample round' }).first().click();
+  await expect(mutedPage.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
+  expect(await mutedPage.evaluate(() => (window as unknown as { __toneStarts: number }).__toneStarts)).toBe(0);
+  await mutedContext.close();
 });
 
 test('@claim:key-rollover lets both players move at the same time', async ({ page }) => {

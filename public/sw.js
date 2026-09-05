@@ -1,4 +1,4 @@
-const CACHE_NAME = 'one-screen-sprint-v2';
+const CACHE_NAME = 'one-screen-sprint-v3';
 const CORE = ['/', '/demo', '/privacy', '/terms', '/favicon.svg', '/art/race-poster.webp'];
 
 self.addEventListener('install', (event) => {

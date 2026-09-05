@@ -109,4 +109,34 @@ describe('deterministic match model', () => {
     expect(player.y).toBe(player.checkpointY);
     expect(player.falls).toBe(1);
   });
+
+  it('@claim:edge-assist jumps automatically near a platform edge without a jump key', () => {
+    const assisted = createGame('ASSIST-1');
+    const manual = createGame('ASSIST-1');
+    begin(assisted);
+    begin(manual);
+
+    for (const game of [assisted, manual]) {
+      const player = game.players[0];
+      const platform = game.course.platforms[0];
+      expect(platform).toBeDefined();
+      if (!platform) return;
+      player.x = platform.x + platform.width - player.width - 20;
+      player.y = platform.y - player.height;
+      player.previousX = player.x;
+      player.previousY = player.y;
+      player.vx = 0;
+      player.vy = 0;
+      player.grounded = true;
+    }
+
+    const moveRight = { left: false, right: true, up: false, dash: false };
+    stepGame(assisted, [moveRight, emptyControls()], { ...settings, assist: true });
+    stepGame(manual, [moveRight, emptyControls()], { ...settings, assist: false });
+
+    expect(assisted.players[0].grounded).toBe(false);
+    expect(assisted.players[0].vy).toBeLessThan(0);
+    expect(manual.players[0].grounded).toBe(true);
+    expect(manual.players[0].vy).toBe(0);
+  });
 });
