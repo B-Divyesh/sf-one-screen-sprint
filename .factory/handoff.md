@@ -1,119 +1,58 @@
-# One Screen Sprint repair handoff
+# One Screen Sprint verification handoff
 
 - Date: 2026-09-05 UTC
-- Work order: `one-screen-sprint-repair-2`
-- Result: **Repair complete — all three current findings fixed**
+- Work order: `one-screen-sprint-verify-3`
+- Result: **FAIL — 3 low-severity findings; 3 untested claims**
 - Live URL: <https://one-screen-sprint.sociobot.in>
-- Implementation and deployed SHA: `64d2f15df3a821c268e7113e6c82d4f1b5a365f8`
-- Evidence documentation SHA: `da2521f59ca790d3e983f33f67b6c051ce4e9987`
-- Previous verification report: `.factory/verification-2.md`
-- Repair evidence: `.factory/evidence/repair-2/`
+- Implementation reviewed: `64d2f15df3a821c268e7113e6c82d4f1b5a365f8`
+- Documentation head received: `7bb248e7ebdcf06cee29dac558d03d84906b89e4`
+- Full report: `.factory/verification-3.md`
+- Evidence: `.factory/evidence/verification-3/`
 
-## What changed
+## Verification result
 
-- Every visible phone link, button, and form control now has a rendered target
-  of at least 44 by 44 CSS pixels. This includes header and footer links, demo
-  controls, legal-page email links, game controls, and settings checkboxes.
-- Required phone copy now renders at 17 CSS pixels. The audience, sample-action
-  note, three facts, instructions, navigation, buttons, and footer were checked.
-  Relative units preserve browser text resizing.
-- The 404 now uses the standard header navigation and complete footer. It has
-  the product description, Privacy, Terms, Param Factory attribution, version,
-  and generated-image disclosure.
-- The service-worker cache version changed to `one-screen-sprint-v2`, so an
-  existing browser can replace the earlier cached shell.
-- Browser regressions measure rendered target boxes and computed type sizes at
-  390 by 844 pixels. They also check 200% text, first-screen game visibility,
-  and the standalone 404 structure.
+The game works end to end and every declared command passes. The one-click
+sample reached a 3–1 end screen, kept its sample label, reset to `CLUB-7` at
+1–1, cleared sample storage on exit, and did not change the real namespace. A
+separate live match ended 3–0 and replay reset it correctly. The run is recorded
+in `sample-match.webm`.
 
-## Current finding disposition
+All seven findings from verification 1 and 2 remain fixed. Phone targets are
+at least 44 × 44 pixels, required phone text is 17 pixels, 200% text has no
+horizontal overflow, and the live 404 has the standard header and footer.
 
-| Finding | Result | Evidence |
-| --- | --- | --- |
-| V2-01 phone targets below 44 by 44 | Fixed. Every visible target on `/`, `/demo`, `/privacy`, `/terms`, and the live 404 measured at least 44 by 44. | `live-results.json` |
-| V2-02 required phone copy below minimum | Fixed. Required selectors computed to 17 pixels. At 200% text, page width remained 390 pixels with no horizontal overflow. | `live-results.json`, `live-phone-text-200.png` |
-| V2-03 incomplete 404 shell | Fixed. The live page returns HTTP 404 and has the standard three-link header plus the complete footer. | `404-headers.txt`, `404-live.html`, `live-404.png` |
+Acceptance still fails because three public Settings descriptions are missing
+from `.factory/claims.json` and its tagged command set:
 
-The four V1 findings remain fixed. Browser Back clears demo storage, the
-untested match-length copy remains removed, the fixed-step claim has a tagged
-test, and the deterministic-course command checks both repeat and new seeds.
-Earlier first-screen, 404-status, and touch-control repairs also remain fixed.
+1. Mute says it stops the short tones.
+2. Movement effects say they toggle shake and paper flecks. The candidate does
+   not implement paper flecks.
+3. Edge assist says it jumps automatically near platform edges.
 
-## Verification
+The settings-persistence test proves saved checkbox state, not these three
+behaviors. See V3-01 through V3-03 in the verification report.
 
-The exact pushed implementation was cloned into a new temporary directory.
-From that clean checkout:
+## Checks completed
 
-```sh
-npm ci
-npm run check
-```
-
-Results:
-
-- Dependency install and `npm audit --audit-level=moderate`: 0 vulnerabilities.
+- Fresh remote checkout: `npm ci` and `npm run check` passed.
 - Copy audit: 65 lines passed.
-- Production build: passed and produced `dist/`.
-- Unit tests: 6 passed.
-- Browser tests: 13 passed.
-- All 14 claim commands ran separately and passed.
-- JavaScript: 31.59 KB raw, 10.88 KB gzip.
-- CSS: 12.17 KB raw, 3.51 KB gzip.
-- Playwright axe: no serious or critical issues on all public routes and 404.
-- Axe CLI on the live five-page set: 0 violations.
-- Live URL verifier: 200, correct metadata and landmarks, no console errors.
-- Every deployable local file matched the live file by SHA-256.
+- Build: passed; `dist/` produced.
+- Tests: 6 unit and 13 browser tests passed.
+- All 14 declared claim commands passed separately.
+- Dependency audit: 0 vulnerabilities.
+- Live axe: 0 violations on all four public routes and the 404.
+- Live verifier: correct baseline structure and no console errors.
+- Lighthouse: 100/100/100/100; LCP 1.7 s; CLS 0; TBT 10 ms; 170 KiB.
+- Live frame sample: 59.88 fps with four-times CPU slowdown at 390 × 844.
+- All 13 deployable files matched the live site byte for byte.
+- Offline reload, service-worker update, reduced motion, keyboard focus,
+  settings reload, corrupt-storage recovery, and privacy deletion passed.
 
-Fresh mobile Lighthouse on the live origin scored 100 performance, 100
-accessibility, 100 best practices, and 100 SEO. LCP was 1.684 seconds, CLS was
-0, total blocking time was 26.5 milliseconds, and transfer was 174,309 bytes.
-The live throttled frame sample measured 59.88 fps across 89 intervals.
+## Next work
 
-## Live game run
+Add exact claim entries and behavior tests for the three settings descriptions.
+Remove the paper-fleck wording unless the effect is implemented. Then deploy
+and repeat independent verification.
 
-- Desktop first screen: job, audience, sample action, three facts, and the full
-  canvas were visible before scrolling.
-- Phone first screen: the same job, audience, action, facts, and game were
-  visible before scrolling. The canvas began at 655.56 pixels in the 844-pixel
-  viewport.
-- Demo: opened course `CLUB-7` at 1–1. Simultaneous keyboard input moved player
-  one from 6% to 40% and player two from 11% to 44%. The match ended 3–1.
-- Demo reset: restored `CLUB-7`, 1–1, round 3 of 5. The demo label remained at
-  the end screen. Leaving removed demo keys and preserved the real setting.
-- Real match: course `RACE-96` reached active play and ended with player one
-  winning 3–0. The recorded run is `live-real-match.webm`.
-- Touch: player one moved from 6% to 42% in a fresh phone demo.
-- Offline: the updated service worker activated and `/demo` reloaded offline
-  with both the sample banner and canvas visible.
-- Routes: `/`, `/demo`, `/privacy`, and `/terms` return 200 with unique titles.
-  The deliberate missing route returns 404. Product links and static files
-  return their expected statuses.
-
-## Scope and remaining limits
-
-This is a local two-player game. There is no backend, database, tenant, room,
-rate limit, payment, billing offer, account, or remote multiplayer path to
-test. Independent online clients do not apply; both local control sets were
-tested independently and simultaneously.
-
-No AI feature fits this immediate local race, and no new image asset was needed
-for this repair. Existing generated-image provenance remains in
-`.factory/design.md`.
-
-No product defect is known. The phone checks use Chromium device emulation,
-not a physical handset. INP has no field data. Completion analytics remain
-intentionally absent to preserve the product's stated privacy behavior.
-
-## Reproduce
-
-```sh
-npm ci
-npm run check
-npm audit --audit-level=moderate
-```
-
-For the deployed flow and screenshots:
-
-```sh
-node .factory/evidence/repair-2/run-live.mjs
-```
+There is no backend, tenant, room, payment, or server-side persistence path.
+No backend or independent online-client checks apply.

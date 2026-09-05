@@ -1,0 +1,671 @@
+{
+  "checkedAt": "2026-09-05T23:19:48.093Z",
+  "implementation": "64d2f15df3a821c268e7113e6c82d4f1b5a365f8",
+  "documentation": "7bb248e7ebdcf06cee29dac558d03d84906b89e4",
+  "firstScreen": {
+    "desktop": {
+      "scrollY": 0,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard",
+      "audience": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "action": "Try it with sample data",
+      "actionNote": "Loads a fixed 1–1 rematch.",
+      "facts": [
+        "Two local players. No account or online opponent.",
+        "75 seconds per round. First to three wins.",
+        "Free. No ads. Works offline after the first visit."
+      ],
+      "game": {
+        "top": 336.796875,
+        "bottom": 845.953125,
+        "width": 905.171875,
+        "height": 509.15625
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "phone": {
+      "scrollY": 0,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard",
+      "audience": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "action": "Try it with sample data",
+      "actionNote": "Loads a fixed 1–1 rematch.",
+      "facts": [
+        "Two local players. No account or online opponent.",
+        "75 seconds per round. First to three wins.",
+        "Free. No ads. Works offline after the first visit."
+      ],
+      "game": {
+        "top": 655.5625,
+        "bottom": 855.25,
+        "width": 355,
+        "height": 199.6875
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "sample": {
+    "entry": {
+      "course": "CLUB-7",
+      "score": [
+        1,
+        1
+      ],
+      "round": 3
+    },
+    "simultaneousProgress": {
+      "before": {
+        "p1": 6,
+        "p2": 11
+      },
+      "after": {
+        "p1": 38,
+        "p2": 42
+      }
+    },
+    "end": "Player 1 wins 3–1",
+    "persistentLabel": true,
+    "reset": {
+      "score": [
+        "1",
+        "1"
+      ],
+      "round": "Round 3 of 5",
+      "course": "Course CLUB-7"
+    },
+    "browserHistoryClearsDemo": true,
+    "startForRealClearsDemo": true,
+    "realDataUnchanged": true,
+    "crossOriginRequests": []
+  },
+  "realMatch": {
+    "course": "Course INK-63",
+    "end": "Player 1 wins 3–0",
+    "settingsPersist": true,
+    "replayReset": {
+      "sameCourse": true,
+      "score": [
+        0,
+        0
+      ],
+      "round": 1,
+      "time": 75
+    }
+  },
+  "phone": {
+    "targetsByRoute": {
+      "/": [
+        {
+          "name": "Skip to game and page content",
+          "width": 267.34375,
+          "height": 50.34375,
+          "passes": true
+        },
+        {
+          "name": "One Screen Sprint home",
+          "width": 44,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Demo",
+          "width": 47.234375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "How it works",
+          "width": 104.859375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Try it with sample data",
+          "width": 183.78125,
+          "height": 63.09375,
+          "passes": true
+        },
+        {
+          "name": "Pause",
+          "width": 72.09375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Settings",
+          "width": 89.0625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Start match",
+          "width": 129.53125,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 move left",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 move right",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 dash",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 move left",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 move right",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 dash",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Read the privacy details",
+          "width": 181.4375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Terms",
+          "width": 49.765625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Built by Param Factory (external site)",
+          "width": 185.171875,
+          "height": 44,
+          "passes": true
+        }
+      ],
+      "/demo": [
+        {
+          "name": "Skip to game and page content",
+          "width": 267.34375,
+          "height": 50.34375,
+          "passes": true
+        },
+        {
+          "name": "Reset demo",
+          "width": 118.375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Start for real",
+          "width": 123.09375,
+          "height": 44.34375,
+          "passes": true
+        },
+        {
+          "name": "One Screen Sprint home",
+          "width": 44,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Demo",
+          "width": 47.234375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "How it works",
+          "width": 104.859375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Start sample round",
+          "width": 160.921875,
+          "height": 63.09375,
+          "passes": true
+        },
+        {
+          "name": "Pause",
+          "width": 72.09375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Settings",
+          "width": 89.0625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Start sample round",
+          "width": 190.921875,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 move left",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 move right",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P1 dash",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 move left",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 move right",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "P2 dash",
+          "width": 69.25,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Read the privacy details",
+          "width": 181.4375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Terms",
+          "width": 49.765625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Built by Param Factory (external site)",
+          "width": 185.171875,
+          "height": 44,
+          "passes": true
+        }
+      ],
+      "/privacy": [
+        {
+          "name": "Skip to game and page content",
+          "width": 267.34375,
+          "height": 50.34375,
+          "passes": true
+        },
+        {
+          "name": "One Screen Sprint home",
+          "width": 44,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Demo",
+          "width": 47.234375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "How it works",
+          "width": 104.859375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Clear saved game",
+          "width": 180.59375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "privacy@sociobot.in",
+          "width": 152.390625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Terms",
+          "width": 49.765625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Built by Param Factory (external site)",
+          "width": 185.171875,
+          "height": 44,
+          "passes": true
+        }
+      ],
+      "/terms": [
+        {
+          "name": "Skip to game and page content",
+          "width": 267.34375,
+          "height": 50.34375,
+          "passes": true
+        },
+        {
+          "name": "One Screen Sprint home",
+          "width": 44,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Demo",
+          "width": 47.234375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "How it works",
+          "width": 104.859375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "support@sociobot.in",
+          "width": 155.234375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Terms",
+          "width": 49.765625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Built by Param Factory (external site)",
+          "width": 185.171875,
+          "height": 44,
+          "passes": true
+        }
+      ],
+      "/verification-3-missing": [
+        {
+          "name": "Skip to page content",
+          "width": 187.015625,
+          "height": 46.34375,
+          "passes": true
+        },
+        {
+          "name": "One Screen Sprint home",
+          "width": 44,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Demo",
+          "width": 47.234375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "How it works",
+          "width": 104.859375,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Return to the game",
+          "width": 190.90625,
+          "height": 50.34375,
+          "passes": true
+        },
+        {
+          "name": "Privacy",
+          "width": 60.5,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Terms",
+          "width": 49.765625,
+          "height": 44,
+          "passes": true
+        },
+        {
+          "name": "Built by Param Factory (external site)",
+          "width": 185.171875,
+          "height": 44,
+          "passes": true
+        }
+      ]
+    },
+    "typeSizes": {
+      ".audience": 17,
+      ".hero-actions span": 17,
+      ".plain-facts": 17,
+      ".game-foot": 17,
+      ".site-footer": 17,
+      ".site-header nav a": 17,
+      "button": 17
+    },
+    "resized": {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "actionVisible": true,
+      "canvasVisible": true
+    },
+    "touchProgress": {
+      "before": 6,
+      "after": 42
+    }
+  },
+  "keyboard": {
+    "skipLink": true,
+    "focusOutline": {
+      "style": "solid",
+      "width": "4px",
+      "color": "rgb(0, 95, 204)"
+    },
+    "modalKeyboard": true,
+    "modalFocusReturn": true,
+    "routeFocus": true
+  },
+  "routes": {
+    "404": {
+      "status": 404,
+      "title": "Page not found — One Screen Sprint",
+      "standardHeaderAndFooter": true
+    },
+    "/": {
+      "status": 200,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard"
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — One Screen Sprint",
+      "heading": "Race a friend on one keyboard"
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — One Screen Sprint",
+      "heading": "See what this game stores"
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — One Screen Sprint",
+      "heading": "Play the game fairly and safely"
+    },
+    "links": [
+      {
+        "href": "https://one-screen-sprint.sociobot.in/#main",
+        "status": 200
+      },
+      {
+        "href": "https://one-screen-sprint.sociobot.in/",
+        "status": 200
+      },
+      {
+        "href": "https://one-screen-sprint.sociobot.in/demo",
+        "status": 200
+      },
+      {
+        "href": "https://one-screen-sprint.sociobot.in/#how-it-works",
+        "status": 200
+      },
+      {
+        "href": "https://one-screen-sprint.sociobot.in/privacy",
+        "status": 200
+      },
+      {
+        "href": "https://one-screen-sprint.sociobot.in/terms",
+        "status": 200
+      }
+    ]
+  },
+  "accessibility": {
+    "404": {
+      "violations": 0
+    },
+    "/": {
+      "violations": 0
+    },
+    "/demo": {
+      "violations": 0
+    },
+    "/privacy": {
+      "violations": 0
+    },
+    "/terms": {
+      "violations": 0
+    },
+    "reducedMotion": true
+  },
+  "privacy": {
+    "clearRequest": true
+  },
+  "recovery": {
+    "pausedReloadResume": true,
+    "invalidStorage": "new playable match"
+  },
+  "offline": {
+    "serviceWorker": {
+      "active": true,
+      "scope": "https://one-screen-sprint.sociobot.in/"
+    },
+    "bannerVisible": true,
+    "canvasVisible": true
+  },
+  "performance": {
+    "frameRate": {
+      "sampleCount": 89,
+      "medianMs": 16.699999999999818,
+      "fps": 59.88023952095874
+    }
+  },
+  "consoleErrors": []
+}
