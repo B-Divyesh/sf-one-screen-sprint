@@ -766,8 +766,12 @@ dialog h2 {
   }
 
   .hero {
-    gap: 28px;
+    gap: 12px;
     padding-block: 24px 48px;
+  }
+
+  .hero-copy > .eyebrow {
+    display: none;
   }
 
   h1 {
@@ -800,7 +804,11 @@ dialog h2 {
   }
 
   .game-topline {
-    padding: 8px;
+    padding: 4px 8px;
+  }
+
+  .game-topline .game-label {
+    display: none;
   }
 
   .game-actions button {
@@ -811,7 +819,7 @@ dialog h2 {
 
   .scoreboard {
     gap: 6px;
-    padding: 7px 8px;
+    padding: 3px 8px;
   }
 
   .player-score {
@@ -833,6 +841,10 @@ dialog h2 {
 
   .round-clock strong {
     font-size: 1.35rem;
+  }
+
+  .race-progress {
+    display: none;
   }
 
   .game-foot {
