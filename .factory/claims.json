@@ -1,0 +1,93 @@
+[
+  {
+    "id": "best-of-five-end",
+    "claim": "The local match reaches an actual first-to-three end screen.",
+    "where": "game, README",
+    "test": "npm run test:browser -- --grep=@claim:best-of-five-end",
+    "sandbox": "fresh browser context; /demo; enable edge assist; play both remaining sample rounds with keyboard input; assert winner and match score"
+  },
+  {
+    "id": "restart-reset",
+    "claim": "Race another course resets the score, timer, and round.",
+    "where": "match end screen",
+    "test": "npm run test:browser -- --grep=@claim:restart-reset",
+    "sandbox": "complete /demo match; start another course; assert 0–0, round one, and 75 seconds"
+  },
+  {
+    "id": "free-no-ads",
+    "claim": "The complete game is free and has no ads or checkout.",
+    "where": "landing facts, README",
+    "test": "npm run test:browser -- --grep=@claim:free-no-ads",
+    "sandbox": "complete the sample match and start a new course without an account, ad, payment, or blocked action"
+  },
+  {
+    "id": "fresh-course",
+    "claim": "A new match makes different deterministic course geometry.",
+    "where": "landing audience, How to play, README",
+    "test": "npm run test:unit -- --testNamePattern=@claim:fresh-course",
+    "sandbox": "generate two documented seeds and compare the resulting platform geometry"
+  },
+  {
+    "id": "round-limit",
+    "claim": "A round ends at 75 seconds and awards the lead by distance, with a tie extension.",
+    "where": "landing facts, How to play, README",
+    "test": "npm run test:unit -- --testNamePattern=@claim:round-limit",
+    "sandbox": "advance deterministic matches across the 75-second boundary with a leader and with an exact tie"
+  },
+  {
+    "id": "control-actions",
+    "claim": "Jump, grapple, dash, and fall recovery affect the deterministic race state.",
+    "where": "game controls, How to play, README",
+    "test": "npm run test:unit -- --testNamePattern=@claim:control-actions",
+    "sandbox": "apply each control to a running deterministic round and assert movement, grapple state, cooldown, and checkpoint recovery"
+  },
+  {
+    "id": "settings-persist",
+    "claim": "Mute, movement effects, and edge assist persist after reload.",
+    "where": "settings, README",
+    "test": "npm run test:browser -- --grep=@claim:settings-persist",
+    "sandbox": "fresh /demo context; change all settings; reload; assert each saved state"
+  },
+  {
+    "id": "key-rollover",
+    "claim": "Both players can move at the same time from one keyboard.",
+    "where": "landing facts, controls, README",
+    "test": "npm run test:browser -- --grep=@claim:key-rollover",
+    "sandbox": "fresh /demo context; hold D and ArrowRight together; assert both course progress values increase"
+  },
+  {
+    "id": "demo-isolated",
+    "claim": "The sample uses separate storage and reset does not change real saved data.",
+    "where": "demo banner, privacy page, demo documentation",
+    "test": "npm run test:browser -- --grep=@claim:demo-isolated",
+    "sandbox": "save a real setting; enter, change, and reset /demo; leave demo; compare real value and demo keys"
+  },
+  {
+    "id": "local-only",
+    "claim": "The game sends no game or identity data to another origin.",
+    "where": "privacy page, README",
+    "test": "npm run test:browser -- --grep=@claim:local-only",
+    "sandbox": "record every request while changing a setting and starting /demo; assert every request is same-origin"
+  },
+  {
+    "id": "offline-reload",
+    "claim": "The game works offline after the first successful visit.",
+    "where": "landing facts, README",
+    "test": "npm run test:browser -- --grep=@claim:offline-reload",
+    "sandbox": "own fresh browser context; load /demo; wait for service worker; reload once; set context offline; reload and assert game and sample banner"
+  },
+  {
+    "id": "60-fps",
+    "claim": "The game measures at least 55 rendered frames per second at a four-times CPU slowdown on a 390 by 844 viewport.",
+    "where": "README, live frame meter",
+    "test": "npm run test:browser -- --grep=@claim:60-fps",
+    "sandbox": "fresh Chromium page at 390 by 844; four-times CPU slowdown; sample 90 requestAnimationFrame intervals and assert median is at least 55 fps"
+  },
+  {
+    "id": "refresh-recovery",
+    "claim": "A paused match is available after reload.",
+    "where": "README, privacy page",
+    "test": "npm run test:browser -- --grep=@claim:refresh-recovery",
+    "sandbox": "start /demo, pause by keyboard, reload, assert paused state, then resume"
+  }
+]

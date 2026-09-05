@@ -1,0 +1,26 @@
+{
+  "name": "one-screen-sprint",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "vitest run src && playwright test",
+    "test:unit": "vitest run src",
+    "test:browser": "playwright test",
+    "test:claims": "npm run test:unit -- --testNamePattern=@claim: && npm run test:browser -- --grep=@claim:",
+    "verify:claims": "node scripts/verify-claims.mjs",
+    "audit:copy": "node scripts/audit-copy.mjs",
+    "check": "npm run audit:copy && npm run build && npm test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "1.58.2",
+    "@types/node": "22.18.0",
+    "typescript": "5.9.2",
+    "vite": "7.3.6",
+    "vitest": "3.2.7"
+  }
+}

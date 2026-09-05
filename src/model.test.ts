@@ -1,0 +1,105 @@
+import { describe, expect, it } from 'vitest';
+import {
+  FIXED_STEP,
+  ROUND_SECONDS,
+  courseSignature,
+  createCourse,
+  createGame,
+  emptyControls,
+  nextRound,
+  startRound,
+  stepGame,
+  type Controls,
+  type GameSettings,
+} from './model';
+
+const settings: GameSettings = { muted: true, effects: false, assist: false };
+const idle: [Controls, Controls] = [emptyControls(), emptyControls()];
+
+function begin(state: ReturnType<typeof createGame>): void {
+  startRound(state);
+  for (let index = 0; index < 130; index += 1) stepGame(state, idle, settings, FIXED_STEP);
+}
+
+describe('deterministic match model', () => {
+  it('generates the same playable geometry for the same seed', () => {
+    expect(createCourse('CLUB-7')).toEqual(createCourse('CLUB-7'));
+    expect(createCourse('CLUB-7').platforms).toHaveLength(6);
+    expect(createCourse('CLUB-7').anchors.length).toBeGreaterThanOrEqual(3);
+  });
+
+  it('@claim:fresh-course creates different course geometry for a new match seed', () => {
+    const first = courseSignature(createCourse('CLUB-7'));
+    const second = courseSignature(createCourse('RING-42'));
+    expect(second).not.toBe(first);
+  });
+
+  it('ends a best-of-five as soon as one player wins three rounds', () => {
+    const game = createGame('TEST-1');
+    for (let round = 0; round < 3; round += 1) {
+      begin(game);
+      game.players[0].x = game.course.finishX;
+      stepGame(game, idle, settings);
+      if (round < 2) nextRound(game);
+    }
+    expect(game.phase).toBe('match-over');
+    expect(game.matchWinner).toBe(0);
+    expect(game.score).toEqual([3, 0]);
+    expect(game.round).toBe(3);
+  });
+
+  it('@claim:round-limit uses distance at the 75-second boundary and extends an exact tie', () => {
+    const distanceGame = createGame('TIME-1');
+    begin(distanceGame);
+    distanceGame.players[0].x = 400;
+    distanceGame.players[1].x = 300;
+    distanceGame.timeLeft = FIXED_STEP / 2;
+    stepGame(distanceGame, idle, settings);
+    expect(distanceGame.phase).toBe('round-over');
+    expect(distanceGame.finishReason).toBe('distance');
+
+    const tieGame = createGame('TIME-2');
+    begin(tieGame);
+    tieGame.players[0].x = 300;
+    tieGame.players[1].x = 300;
+    tieGame.timeLeft = FIXED_STEP / 2;
+    stepGame(tieGame, idle, settings);
+    expect(tieGame.phase).toBe('playing');
+    expect(tieGame.timeLeft).toBe(10);
+  });
+
+  it('starts each round with the full timer and reset player positions', () => {
+    const game = createGame('RESET-1');
+    begin(game);
+    game.players[0].x = game.course.finishX;
+    stepGame(game, idle, settings);
+    nextRound(game);
+    expect(game.timeLeft).toBe(ROUND_SECONDS);
+    expect(game.players[0].x).toBe(54);
+    expect(game.players[1].x).toBe(96);
+    expect(game.phase).toBe('countdown');
+  });
+
+  it('@claim:control-actions makes jump, grapple, dash, and fall recovery change play', () => {
+    const game = createGame('CONTROL-1');
+    begin(game);
+    const player = game.players[0];
+    const active = { left: false, right: true, up: true, dash: true };
+    stepGame(game, [active, emptyControls()], settings);
+    expect(player.vx).toBeGreaterThan(400);
+    expect(player.vy).toBeLessThan(0);
+    expect(player.dashCooldown).toBeGreaterThan(0);
+    const anchor = game.course.anchors[0];
+    expect(anchor).toBeDefined();
+    if (!anchor) return;
+    player.x = anchor.x - player.width / 2;
+    player.y = anchor.y + 90;
+    player.grounded = false;
+    stepGame(game, [{ ...active, dash: false }, emptyControls()], settings);
+    expect(player.grappling).not.toBeNull();
+    player.y = 700;
+    stepGame(game, idle, settings);
+    expect(player.y).toBe(player.checkpointY);
+    expect(player.falls).toBe(1);
+  });
+});

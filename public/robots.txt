@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://one-screen-sprint.sociobot.in/sitemap.xml

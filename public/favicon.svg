@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="One Screen Sprint">
+  <rect width="64" height="64" fill="#F4E9D3"/>
+  <path d="M8 46h48v8H8z" fill="#152D2F"/>
+  <circle cx="19" cy="28" r="9" fill="#D94A3D" stroke="#152D2F" stroke-width="4"/>
+  <circle cx="43" cy="21" r="9" fill="#176B87" stroke="#152D2F" stroke-width="4"/>
+  <path d="M19 37v9M43 30v16" stroke="#152D2F" stroke-width="5"/>
+  <path d="M52 8v38M52 9h10v8H52" fill="none" stroke="#152D2F" stroke-width="4"/>
+  <path d="M54 11h4v4h-4z" fill="#B8D638"/>
+</svg>
