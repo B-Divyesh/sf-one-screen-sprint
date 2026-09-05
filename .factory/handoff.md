@@ -36,7 +36,7 @@
 
 ## Verification
 
-Clean checkout at `7bf9d3d7da9e3508457059dec11cc98c664242a3`:
+Final clean checkout at `7cb844d2fa489b427f03df8b626ffe3ae01d215a`:
 
 ```sh
 npm ci
@@ -44,11 +44,10 @@ npm run check
 ```
 
 Result: dependency audit found 0 vulnerabilities; copy audit passed 65 lines;
-production build passed; 6 model tests passed; 10 browser tests passed. The
-later phone-control-only test also passed, bringing the current suite to 11
-browser tests.
+production build passed; 6 model tests passed; and 11 browser tests passed.
 
-Every command in `.factory/claims.json` was then run separately with
+Every command in `.factory/claims.json` was then run separately from that same
+clean checkout with
 `npm run verify:claims`. All 13 declared claim commands passed. This includes
 the deterministic end screen, restart state, new course geometry, 75-second
 boundary, jump/grapple/dash/fall outcomes, key rollover, setting persistence,
