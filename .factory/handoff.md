@@ -5,7 +5,7 @@
 - Result: **Repair complete — all three current findings fixed**
 - Live URL: <https://one-screen-sprint.sociobot.in>
 - Implementation and deployed SHA: `64d2f15df3a821c268e7113e6c82d4f1b5a365f8`
-- Evidence documentation SHA: recorded by the follow-up identity commit
+- Evidence documentation SHA: `da2521f59ca790d3e983f33f67b6c051ce4e9987`
 - Previous verification report: `.factory/verification-2.md`
 - Repair evidence: `.factory/evidence/repair-2/`
 
