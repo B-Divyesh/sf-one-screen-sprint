@@ -1,0 +1,21 @@
+Candidate: 077fb1c000e62b91022306ddd7fda07c981d184f
+Checked: 2026-09-05 UTC
+Live URL: https://one-screen-sprint.sociobot.in
+
+The 13 public files in the clean candidate build matched the live response byte
+for byte. staticwebapp.config.json is the fourteenth dist file and correctly is
+not served as a public asset.
+
+60fc07e7f0238f7bdb1e5f2203ec61adc1e998da212ab882656f3aa50ab5f581  404.css
+cba994925e171302b1cffa0c8c4b5741b1f8d7a64783e085ab8c2befe1bde26b  404.html
+fea61392a59477f99708d1ded785682fcfac9df6191ee4e2b97616a334fcbeb7  apple-touch-icon.png
+b965d5d250137d61ff3843790b24e70c957c04e63197cbdace1c1a18ea8c0e4d  art/one-screen-sprint-social.jpg
+46a1771e1ec0bd0434ccb5ef2d4ebeb48388d13b8f972eefa610c6887077022e  art/race-poster.webp
+f9f390953d26989b0a1e8cc1fb7bff8850be5c059ad6c94052485531641da94a  assets/index-BATKxF3i.js
+d4bdb7e61658a01bf6f7ea2e321aad3b229bd1b81d6c073bc9521e0a4747a95a  assets/index-BATKxF3i.js.map
+d1e699dfe3942391c148af5064c211699f7e26011acce8c986fc802331a9b6c8  assets/index-SDsu9ySd.css
+ecb445d154c0ed356e79fb9f6f6624e6506c844cf3d3532c68f39cdcf78adf6a  favicon.svg
+c53c5bbd942258de4987533dd04ad9807917c3eae2c0d392aace4c18e25aa8c2  index.html
+626894012d4696f0ef9badd65164f2654e7e7bb364a0ba028f8c62558b108561  robots.txt
+83f425a67a82a49d7501c59fb908df82c7a0a8b710bece26872525be0610e33f  sitemap.xml
+111d3a2d28b8ed3c00af0a128c0217af7b4b4647f3d185af6477e9a2c6dd76e9  sw.js

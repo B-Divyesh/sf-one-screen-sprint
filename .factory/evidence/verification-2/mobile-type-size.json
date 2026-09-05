@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-09-05T22:27:59.976Z",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "baseline": "Body text must be at least 16 CSS pixels on web; the attached design contract asks for at least 17 pt on mobile.",
+  "measurements": {
+    ".audience": {
+      "text": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "fontSize": "15.68px",
+      "lineHeight": "24.304px"
+    },
+    ".hero-actions span": {
+      "text": "Loads a fixed 1–1 rematch.",
+      "fontSize": "11.52px",
+      "lineHeight": "17.856px"
+    },
+    ".plain-facts": {
+      "text": "Two local players. No account or online opponent.\n          75 seconds per round. First to three wins.\n          Free. No ads. Works offline after the first visit.",
+      "fontSize": "12px",
+      "lineHeight": "18.6px"
+    },
+    ".game-foot": {
+      "text": "Goal: Reach the checked flag first. Falling returns you to your last platform. Press Esc to pause.\n          — fps · Fixed 60 Hz simulation",
+      "fontSize": "10.88px",
+      "lineHeight": "16.864px"
+    },
+    ".site-footer": {
+      "text": "Race a friend on one keyboard in rounds under 75 seconds.\n      \n        Privacy\n        Terms\n        Built by Param Factory (external site)\n      \n      Version 1.0.0 · Supporting image generated for this game.",
+      "fontSize": "12.8px",
+      "lineHeight": "19.84px"
+    }
+  }
+}

@@ -1,0 +1,884 @@
+{
+  "checkedAt": "2026-09-05T22:27:23.599Z",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "requirement": "Every visible touch target is at least 44 by 44 CSS pixels.",
+  "routes": {
+    "/": {
+      "items": [
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 10,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Try it with sample data",
+          "width": 190.34,
+          "height": 44,
+          "top": 280.66,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Pause",
+          "width": 55.94,
+          "height": 44,
+          "top": 429.44,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Settings",
+          "width": 67.44,
+          "height": 44,
+          "top": 429.44,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Start match",
+          "width": 115.17,
+          "height": 44,
+          "top": 673.48,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 move left",
+          "width": 69.25,
+          "height": 44,
+          "top": 749.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 move right",
+          "width": 69.25,
+          "height": 44,
+          "top": 749.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "top": 749.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 dash",
+          "width": 69.25,
+          "height": 44,
+          "top": 749.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 move left",
+          "width": 69.25,
+          "height": 44,
+          "top": 801.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 move right",
+          "width": 69.25,
+          "height": 44,
+          "top": 801.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "top": 801.42,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 dash",
+          "width": 69.25,
+          "height": 44,
+          "top": 801.42,
+          "passes44": true
+        },
+        {
+          "tag": "A",
+          "text": "Read the privacy details",
+          "width": 170.77,
+          "height": 17,
+          "top": 1886.98,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 2027.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 2027.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 2027.61,
+          "passes44": false
+        }
+      ],
+      "failures": [
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 10,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Read the privacy details",
+          "width": 170.77,
+          "height": 17,
+          "top": 1886.98,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 2027.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 2027.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 2027.61,
+          "passes44": false
+        }
+      ]
+    },
+    "/demo": {
+      "items": [
+        {
+          "tag": "BUTTON",
+          "text": "Reset demo",
+          "width": 99.58,
+          "height": 36,
+          "top": 25.36,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Start for real",
+          "width": 84.53,
+          "height": 36,
+          "top": 25.36,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 78.36,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 87.19,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 87.19,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 87.19,
+          "passes44": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Start sample round",
+          "width": 167.14,
+          "height": 44,
+          "top": 349.02,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Pause",
+          "width": 55.94,
+          "height": 44,
+          "top": 497.8,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Settings",
+          "width": 67.44,
+          "height": 44,
+          "top": 497.8,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Start sample round",
+          "width": 167.14,
+          "height": 44,
+          "top": 763,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 move left",
+          "width": 69.25,
+          "height": 44,
+          "top": 817.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 move right",
+          "width": 69.25,
+          "height": 44,
+          "top": 817.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "top": 817.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P1 dash",
+          "width": 69.25,
+          "height": 44,
+          "top": 817.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 move left",
+          "width": 69.25,
+          "height": 44,
+          "top": 869.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 move right",
+          "width": 69.25,
+          "height": 44,
+          "top": 869.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 jump or grapple",
+          "width": 69.25,
+          "height": 44,
+          "top": 869.78,
+          "passes44": true
+        },
+        {
+          "tag": "BUTTON",
+          "text": "P2 dash",
+          "width": 69.25,
+          "height": 44,
+          "top": 869.78,
+          "passes44": true
+        },
+        {
+          "tag": "A",
+          "text": "Read the privacy details",
+          "width": 170.77,
+          "height": 17,
+          "top": 1955.34,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 2095.97,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 2095.97,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 2095.97,
+          "passes44": false
+        }
+      ],
+      "failures": [
+        {
+          "tag": "BUTTON",
+          "text": "Reset demo",
+          "width": 99.58,
+          "height": 36,
+          "top": 25.36,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Start for real",
+          "width": 84.53,
+          "height": 36,
+          "top": 25.36,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 78.36,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 87.19,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 87.19,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 87.19,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Read the privacy details",
+          "width": 170.77,
+          "height": 17,
+          "top": 1955.34,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 2095.97,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 2095.97,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 2095.97,
+          "passes44": false
+        }
+      ]
+    },
+    "/privacy": {
+      "items": [
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 10,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Clear saved game",
+          "width": 158.41,
+          "height": 44,
+          "top": 1019.73,
+          "passes44": true
+        },
+        {
+          "tag": "A",
+          "text": "privacy@sociobot.in",
+          "width": 143.42,
+          "height": 17,
+          "top": 1152.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 1334.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 1334.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 1334.03,
+          "passes44": false
+        }
+      ],
+      "failures": [
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 10,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "privacy@sociobot.in",
+          "width": 143.42,
+          "height": 17,
+          "top": 1152.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 1334.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 1334.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 1334.03,
+          "passes44": false
+        }
+      ]
+    },
+    "/terms": {
+      "items": [
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 10,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "support@sociobot.in",
+          "width": 146.11,
+          "height": 17,
+          "top": 927.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 1109.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 1109.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 1109.03,
+          "passes44": false
+        }
+      ],
+      "failures": [
+        {
+          "tag": "A",
+          "text": "One Screen Sprint home",
+          "width": 37,
+          "height": 37,
+          "top": 10,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Demo",
+          "width": 34.66,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "How it works",
+          "width": 76.91,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.38,
+          "height": 19.34,
+          "top": 18.83,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "support@sociobot.in",
+          "width": 146.11,
+          "height": 17,
+          "top": 927.61,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 48.38,
+          "height": 21.06,
+          "top": 1109.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 39.8,
+          "height": 21.06,
+          "top": 1109.03,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Built by Param Factory (external site)",
+          "width": 148.08,
+          "height": 21.06,
+          "top": 1109.03,
+          "passes44": false
+        }
+      ]
+    },
+    "/verification-2-missing": {
+      "items": [
+        {
+          "tag": "A",
+          "text": "2 · One Screen Sprint",
+          "width": 162.72,
+          "height": 17,
+          "top": 23,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Return to the game",
+          "width": 181.8,
+          "height": 48.8,
+          "top": 434.23,
+          "passes44": true
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.58,
+          "height": 15,
+          "top": 705.47,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 37.02,
+          "height": 15,
+          "top": 705.47,
+          "passes44": false
+        }
+      ],
+      "failures": [
+        {
+          "tag": "A",
+          "text": "2 · One Screen Sprint",
+          "width": 162.72,
+          "height": 17,
+          "top": 23,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Privacy",
+          "width": 44.58,
+          "height": 15,
+          "top": 705.47,
+          "passes44": false
+        },
+        {
+          "tag": "A",
+          "text": "Terms",
+          "width": 37.02,
+          "height": 15,
+          "top": 705.47,
+          "passes44": false
+        }
+      ]
+    }
+  },
+  "finding": {
+    "examples": {
+      "homeWordmark": {
+        "tag": "A",
+        "text": "One Screen Sprint home",
+        "width": 37,
+        "height": 37,
+        "top": 10,
+        "passes44": false
+      },
+      "headerDemo": {
+        "tag": "A",
+        "text": "Demo",
+        "width": 34.66,
+        "height": 19.34,
+        "top": 18.83,
+        "passes44": false
+      },
+      "demoReset": {
+        "tag": "BUTTON",
+        "text": "Reset demo",
+        "width": 99.58,
+        "height": 36,
+        "top": 25.36,
+        "passes44": false
+      },
+      "demoExit": {
+        "tag": "A",
+        "text": "Start for real",
+        "width": 84.53,
+        "height": 36,
+        "top": 25.36,
+        "passes44": false
+      },
+      "footerTerms": {
+        "tag": "A",
+        "text": "Terms",
+        "width": 39.8,
+        "height": 21.06,
+        "top": 2027.61,
+        "passes44": false
+      }
+    }
+  }
+}
