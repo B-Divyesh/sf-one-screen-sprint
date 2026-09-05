@@ -1,0 +1,32 @@
+{
+  "slug": "one-screen-sprint",
+  "title": "One Screen Sprint",
+  "territory": "games-creative",
+  "user": "Two people at one keyboard who want an immediate competitive five-minute game with readable controls and a fresh procedural course each match.",
+  "evidence": [
+    {
+      "url": "https://hn.algolia.com/api/v1/items/31615727",
+      "date": "2022-06-04",
+      "quote_or_summary": "Ask HN explicitly seeks browser games that are engaging, sensory, reaction-based, and exciting rather than turn-based or story-heavy; replies note weak web implementations and performance problems."
+    },
+    {
+      "url": "https://ertu.dev/posts/i-made-an-online-shooter-game-in-lisp/",
+      "date": "2025-01-22",
+      "quote_or_summary": "A live browser shooter\u2019s HN play discussion reports that it loads on an iPhone and held a player\u2019s attention for 20 minutes, validating fast browser action without an install."
+    }
+  ],
+  "recurrence": "An explicit game-finder request defines a still-unmet browser use case, while real player feedback shows immediate browser action can hold attention when it loads cleanly.",
+  "current_workaround": "Play Slither-like games alone, open a desktop multiplayer title, or use a browser shooter that requires a public server and network conditions.",
+  "incumbents_and_gap": "Browser shooters serve remote play and arcade portals serve solo scores; simple same-keyboard action with guaranteed short matches is comparatively neglected.",
+  "smallest_useful_product": "A two-player local side-view dash-and-grapple race. One player uses WASD, the other arrows; a procedurally assembled 75-second course changes each best-of-five match. Non-goals: guns, online matchmaking, chat, account profiles, or user-created levels.",
+  "success_measure": "70% of sessions finish a full best-of-five and 40% generate a second course without leaving the page.",
+  "artifact_class": "browser-game",
+  "monetization": "free \u2014 it is a shareable zero-friction game; no ads should interrupt a 75-second round.",
+  "constraints": "Test focus handling and key rollover; touch is not a v1 promise; use original art/sound; include seizure-safe effects settings.",
+  "est_build_effort": "S",
+  "scale": "small (default)",
+  "why_distinct": "It serves physical co-presence with one keyboard, not the much more common online shooter queue.",
+  "confidence": 3,
+  "state": "RESEARCHED",
+  "research_run": "research-browser-games-0901-204259-0"
+}
