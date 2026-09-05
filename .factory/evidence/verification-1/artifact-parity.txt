@@ -1,0 +1,15 @@
+Compared 2026-09-05 UTC after a clean npm run build.
+
+Live and local index.html
+9b1ed90052e9353a7a75e0901b620bfa3b14c676df3fe6500f8cea128e0ed10c
+
+Live and local assets/index-DkcxCjIM.js
+dcb93ee12db34ce176d76ed4f50179328586da1b40ce03ddcf2138cd0a4f0ae8
+
+Live and local assets/index-SDsu9ySd.css
+d1e699dfe3942391c148af5064c211699f7e26011acce8c986fc802331a9b6c8
+
+Live and local sw.js
+111d3a2d28b8ed3c00af0a128c0217af7b4b4647f3d185af6477e9a2c6dd76e9
+
+All four pairs matched byte for byte.

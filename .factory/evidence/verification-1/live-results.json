@@ -1,0 +1,209 @@
+{
+  "checkedAt": "2026-09-05T21:20:22.899Z",
+  "base": "https://one-screen-sprint.sociobot.in",
+  "desktop": {
+    "firstScreen": {
+      "scrollY": 0,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "h1": "Race a friend on one keyboard",
+      "audience": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "action": "Try it with sample data",
+      "canvas": {
+        "top": 336.796875,
+        "bottom": 845.953125,
+        "width": 905.171875,
+        "height": 509.15625
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "dialogFocus": {
+      "initialFocus": "muted",
+      "returnedFocus": "Settings"
+    },
+    "simultaneousProgress": {
+      "before": {
+        "p1": 6,
+        "p2": 11
+      },
+      "after": {
+        "p1": 41,
+        "p2": 45
+      }
+    },
+    "sampleEnd": {
+      "heading": "Player 1 wins 3–1",
+      "summary": [
+        "Match complete",
+        "4 rounds played on CLUB-7."
+      ],
+      "bannerVisible": true
+    },
+    "reset": {
+      "p1": "1",
+      "p2": "1",
+      "round": "Round 3 of 5",
+      "course": "Course CLUB-7",
+      "demoKeys": [
+        "demo:one-screen-sprint:game"
+      ]
+    },
+    "realDataUnchanged": true,
+    "requests": {
+      "total": 4,
+      "crossOrigin": []
+    }
+  },
+  "realMatch": {
+    "course": "Course INK-04",
+    "heading": "Player 1 wins 3–0",
+    "summary": [
+      "Match complete",
+      "3 rounds played on INK-04."
+    ]
+  },
+  "phone": {
+    "firstScreen": {
+      "scrollY": 0,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "h1": "Race a friend on one keyboard",
+      "audience": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "action": "Try it with sample data",
+      "canvas": {
+        "top": 539.734375,
+        "bottom": 739.421875,
+        "width": 355,
+        "height": 199.6875
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "touchSizes": [
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      },
+      {
+        "width": 69.25,
+        "height": 44
+      }
+    ],
+    "progress": {
+      "before": 6,
+      "after": 40
+    },
+    "frameRate": {
+      "sampleCount": 89,
+      "medianMs": 16.700000000000045,
+      "fps": 59.88023952095792
+    }
+  },
+  "offline": {
+    "serviceWorker": {
+      "active": true,
+      "scope": "https://one-screen-sprint.sociobot.in/"
+    },
+    "offlineState": {
+      "bannerVisible": true,
+      "canvasVisible": true,
+      "title": "Demo — One Screen Sprint"
+    }
+  },
+  "routes": {
+    "404": {
+      "status": 404,
+      "title": "Page not found — One Screen Sprint",
+      "heading": "Find the race from the start"
+    },
+    "/": {
+      "status": 200,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard"
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — One Screen Sprint",
+      "heading": "Race a friend on one keyboard"
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — One Screen Sprint",
+      "heading": "See what this game stores"
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — One Screen Sprint",
+      "heading": "Play the game fairly and safely"
+    }
+  },
+  "accessibility": {
+    "404": {
+      "violations": 0,
+      "seriousOrCritical": 0
+    },
+    "/": {
+      "violations": 0,
+      "seriousOrCritical": 0
+    },
+    "/demo": {
+      "violations": 0,
+      "seriousOrCritical": 0
+    },
+    "/privacy": {
+      "violations": 0,
+      "seriousOrCritical": 0
+    },
+    "/terms": {
+      "violations": 0,
+      "seriousOrCritical": 0
+    },
+    "keyboard": {
+      "routeHeadingFocus": true,
+      "focusedAfterTab": "Try it with sample data"
+    },
+    "reducedMotion": true
+  },
+  "links": {
+    "/": 200,
+    "/demo": 200,
+    "/privacy": 200,
+    "/terms": 200,
+    "externalNotFetched": [
+      "https://sociobot.in/",
+      "mailto:privacy@sociobot.in",
+      "mailto:support@sociobot.in"
+    ]
+  },
+  "consoleErrors": [],
+  "expected404Console": [
+    "routes: console: Failed to load resource: the server responded with a status of 404 ()"
+  ]
+}

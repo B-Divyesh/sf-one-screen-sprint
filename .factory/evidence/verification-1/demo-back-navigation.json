@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-09-05T21:25:25.298Z",
+  "beforeBack": [
+    "demo:one-screen-sprint:game"
+  ],
+  "routeAfterBack": "/",
+  "afterBack": [
+    "demo:one-screen-sprint:game",
+    "demo:one-screen-sprint:settings"
+  ],
+  "restoredMuteAfterForward": true,
+  "expected": "Leaving demo mode discards demo data.",
+  "passed": false
+}

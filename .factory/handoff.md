@@ -8,6 +8,30 @@
 - Verification-only test SHA: `cae5adc`
 - Handoff and evidence snapshot SHA: `a55248c`
 
+## Independent verification 1
+
+- Work order: `one-screen-sprint-verify-1`
+- Date: 2026-09-05 UTC
+- Verdict: **FAIL**
+- Findings: 4
+- Untested claim count: 3
+- Full report: `.factory/verification-1.md`
+- New evidence: `.factory/evidence/verification-1/`
+
+The clean build, 6 unit tests, 11 browser tests, all 13 declared claim
+commands, live desktop and phone play, offline reload, accessibility scans,
+route checks, and a full real 3–0 match passed. The live HTML, JavaScript, CSS,
+and service worker match the build from the recorded implementation candidate.
+
+Acceptance remains blocked for two reasons. Browser Back leaves demo keys in
+storage and restores the old demo state on Forward. The claim registry also
+lacks complete command coverage for the public four-to-six-minute match
+duration, fixed 60 Hz simulation, and same-seed determinism statements. No
+product code was changed by the verifier.
+
+Fresh live Lighthouse measured 99 performance, 100 accessibility, 100 best
+practices, and 100 SEO. The live throttled frame check measured 59.88 fps.
+
 ## What shipped
 
 - A complete local two-player dash-and-grapple race in Canvas 2D.
