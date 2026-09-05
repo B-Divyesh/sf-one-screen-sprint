@@ -1,140 +1,96 @@
 # One Screen Sprint handoff
 
 - Date: 2026-09-05 UTC
-- Work order: `one-screen-sprint-builder-1`
+- Work order: `one-screen-sprint-repair-1`
 - Live URL: <https://one-screen-sprint.sociobot.in>
-- Artifact class: `browser-game`
-- Deployed implementation SHA: `7bf9d3d7da9e3508457059dec11cc98c664242a3`
-- Verification-only test SHA: `cae5adc`
-- Handoff and evidence snapshot SHA: `a55248c`
+- Artifact: static two-player browser game
+- Deployed implementation SHA: `077fb1c000e62b91022306ddd7fda07c981d184f`
+- Repair documentation (claims, README, demo) SHA:
+  `74fbe366f1900a1de7d4c16ed6a8db7253da6acf`
+- Deployment: existing `sf-one-screen-sprint` static app; final deployment ID
+  `189e4cb1-a5c7-4b24-9e66-0ceaa93b4edc`
 
-## Independent verification 1
+## What was repaired
 
-- Work order: `one-screen-sprint-verify-1`
-- Date: 2026-09-05 UTC
-- Verdict: **FAIL**
-- Findings: 4
-- Untested claim count: 3
-- Full report: `.factory/verification-1.md`
-- New evidence: `.factory/evidence/verification-1/`
+The game remains a local two-player dash-and-grapple race for two people at one
+keyboard. The first action is **Try it with sample data**, which starts the
+fixed 1–1 `CLUB-7` rematch.
 
-The clean build, 6 unit tests, 11 browser tests, all 13 declared claim
-commands, live desktop and phone play, offline reload, accessibility scans,
-route checks, and a full real 3–0 match passed. The live HTML, JavaScript, CSS,
-and service worker match the build from the recorded implementation candidate.
+The four independent-verification findings are resolved:
 
-Acceptance remains blocked for two reasons. Browser Back leaves demo keys in
-storage and restores the old demo state on Forward. The claim registry also
-lacks complete command coverage for the public four-to-six-minute match
-duration, fixed 60 Hz simulation, and same-seed determinism statements. No
-product code was changed by the verifier.
+1. **V1-01 Demo data on Browser Back:** demo keys now clear on route exits,
+   History Back/Forward, direct in-site navigation, and page hide. A demo reload
+   restores only its own history-entry sample. Settings now save at form submit,
+   before the dialog closes, so a delayed close event cannot recreate a demo key
+   after Back. The regression saves real and demo settings, resets the sample,
+   uses Back, checks the namespace is empty and real settings are unchanged,
+   then checks Forward begins a clean sample.
+2. **V1-02 Match duration claim:** removed the unmeasurable “five minutes” and
+   “usually four to six minutes” promises. The exact, already tested public
+   boundary remains: a round lasts at most 75 seconds.
+3. **V1-03 Fixed 60 Hz simulation:** added the
+   `fixed-60hz-simulation` declared claim. Its outcome test starts a race and
+   proves sixty simulation updates advance the race clock by one second.
+4. **V1-04 Same-seed determinism:** the declared `fresh-course` test now proves
+   both that the same seed reproduces the complete course and that a different
+   seed changes its platform geometry.
 
-Fresh live Lighthouse measured 99 performance, 100 accessibility, 100 best
-practices, and 100 SEO. The live throttled frame check measured 59.88 fps.
-
-## What shipped
-
-- A complete local two-player dash-and-grapple race in Canvas 2D.
-- Deterministic procedural courses with a visible seed, six platforms, four
-  grapple rings, fall recovery, a 75-second boundary, and first-to-three
-  best-of-five scoring.
-- A fixed 60 Hz simulation with interpolated rendering, hidden-tab pause, delta
-  clamping, keyboard rollover, phone controls, mute, movement-effect control,
-  edge assist, and synthesized audio after a user gesture.
-- Start, countdown, active race, pause, round result, match result, replay, and
-  new-course states. The complete real-entry browser run ends at 3–0.
-- Local persistence for settings and paused matches. Invalid saved JSON recovers
-  to a new match.
-- A one-click `/demo` sample labelled “Weekend rematch · course CLUB-7”. It
-  starts at 1–1, uses only `demo:one-screen-sprint:` keys, keeps its banner
-  visible, resets to the sample, and clears itself when the player leaves demo.
-- Offline reload after the first successful visit through a same-origin service
-  worker.
-- `/privacy`, `/terms`, and a styled true HTTP 404 page. All routes have one H1,
-  route-specific titles, landmarks, keyboard focus handling, and security
-  headers.
-- Original procedural game graphics, synthesized tones, and a generated
-  screen-print supporting image. Prompt and provenance are in
-  `.factory/design.md` and `assets/src/race-poster.png.json`.
-- No account, analytics, ads, payment, external runtime assets, or backend.
+`npm run check` now includes the declared-claim runner, so the ordinary quality
+gate executes every command listed in `.factory/claims.json`.
 
 ## Verification
 
-Final clean checkout at `7cb844d2fa489b427f03df8b626ffe3ae01d215a`:
+From the documented clean setup (`npm ci`), the final implementation passed:
 
-```sh
-npm ci
-npm run check
-```
+- `npm run check`: copy audit (65 lines), production build, 6 unit tests, 11
+  browser tests, and all 14 declared claim commands run separately.
+- Production build: `dist/` created; JavaScript is 10.88 KB gzip and CSS is
+  3.43 KB gzip.
+- `/opt/fleet/lib/verify-url.sh` locally and against the live HTTPS page: 200,
+  no console errors, title/language/H1/main present, and no unlabeled buttons
+  or missing image alternatives.
+- `npx @axe-core/cli` against local and live pages: 0 violations. The worker
+  initially lacked a Chrome/ChromeDriver pair, so the documented matching
+  browser prerequisite was installed before this check.
+- Live routes `/`, `/demo`, `/privacy`, and `/terms` return 200. A missing
+  route returns the expected designed HTTP 404. CSP, referrer policy,
+  content-type protection, permissions policy, and cross-origin opener policy
+  are live.
 
-Result: dependency audit found 0 vulnerabilities; copy audit passed 65 lines;
-production build passed; 6 model tests passed; and 11 browser tests passed.
+Fresh live browser contexts checked the actual deployed asset
+`index-BATKxF3i.js`:
 
-Every command in `.factory/claims.json` was then run separately from that same
-clean checkout with
-`npm run verify:claims`. All 13 declared claim commands passed. This includes
-the deterministic end screen, restart state, new course geometry, 75-second
-boundary, jump/grapple/dash/fall outcomes, key rollover, setting persistence,
-demo isolation, same-origin requests, offline reload, throttled frame rate, and
-reload recovery.
+- Desktop (1440 × 1000): job “Race a friend on one keyboard”, audience, first
+  action, and the full canvas were visible before scrolling (canvas y=336.8 to
+  846.0).
+- Phone (390 × 844): the same job, audience, first action, and canvas were
+  visible before scrolling (canvas y=539.7 to 739.4).
+- The one-click sample kept its banner visible. Reset restored score 1–1 and
+  the default mute setting. Browser Back removed every `demo:one-screen-sprint:`
+  key, Forward started a clean sample, and Start for real also left no demo key.
+  The saved real setting was byte-for-byte unchanged.
+- A fresh real keyboard run used edge assist, reached active play, and ended at
+  **Player 1 wins 3–0**. No page or console errors occurred.
 
-Other completed checks:
+The existing throttled-Chromium `60-fps` claim remains part of the 14-command
+claim run. It measures at least 55 rendered fps at 390 × 844 with four-times
+CPU slowdown; the new claim separately covers the fixed simulation step.
 
-- `npm audit`: 0 vulnerabilities.
-- `npm run build`: 10.64 KB JS gzip and 3.43 KB CSS gzip; `dist/` produced.
-- Full real-entry run: three played rounds to a 3–0 match end.
-- Final live demo run: two played rounds from 1–1 to a 3–1 match end.
-- Live Reset demo restored 1–1, round 3, course `CLUB-7`.
-- Live Start for real left the pre-existing real namespace unchanged and
-  removed demo keys.
-- Fresh public desktop: 1440 × 1000, game canvas visible before scroll.
-- Fresh public phone: 390 × 664, game canvas visible before scroll; touch
-  controls use a grid and measured at least 44 × 44 px.
-- Live console: no errors on `/`, `/demo`, `/privacy`, or `/terms`.
-- Live axe: no serious or critical findings on all real routes or the 404.
-- Live routes: `/`, `/demo`, `/privacy`, and `/terms` return 200. An unknown
-  URL returns 404 and shows the designed recovery page. Its 404 network console
-  entry is expected, not an application error.
-- Link crawl: all same-origin and Param Factory links returned 200; contact
-  links are explicit `mailto:` links.
-- Live security headers: CSP, `X-Content-Type-Options`, `Referrer-Policy`,
-  `Permissions-Policy`, and `Cross-Origin-Opener-Policy` present.
-- Live mobile Lighthouse: performance 100, accessibility 100, best practices
-  100, SEO 100; LCP 1.70 s, CLS 0, total transfer 173,944 bytes.
-- Render claim: median at least 55 fps with a four-times Chromium CPU slowdown
-  at 390 × 844. The simulation itself remains fixed at 60 Hz.
+## Privacy, scope, and deployment
 
-Evidence is in `.factory/evidence/`, especially:
+There are no accounts, analytics, ads, payment flows, or backend. The product
+has no paid offer, so no billing-registration metadata applies. It remains a
+single static deployment with browser local storage only; no volume, replica,
+or backend configuration changed.
 
-- `live-final/desktop-cold.png`
-- `live-final/phone-cold.png`
-- `live-final/match-end.png`
-- `live-final/axe-and-run.json`
-- `live-final/browsers.json`
-- `live-final/links.json`
-- `live-final/404-headers.txt`
-- `live-final/lighthouse.report.html`
-- `live-final/verify.json`
+`.factory/catalog-description.txt` is a 67-byte, verb-first description and
+was copied byte-for-byte to `/work/.evidence/catalog-description.txt`.
 
-The catalog description was copied byte-for-byte to
-`/work/.evidence/catalog-description.txt` and is 67 bytes including its newline.
+## Known limits
 
-## Deployment
-
-`dist/` was deployed with the fleet static deployment script to the existing
-product-owned `sf-one-screen-sprint` Azure Static Web App in `centralus`. The
-custom domain is Ready over managed HTTPS. The app is static and uses no server,
-database, secrets, environment values, or extra replica.
-
-## Known gaps and next steps
-
-- The 60 fps check uses Chromium’s four-times CPU slowdown at a phone viewport,
-  not a lab measurement on physical mid-range phone hardware. The on-page frame
-  meter makes device-specific performance visible.
-- Offline play begins only after one successful online visit, as stated.
-- Touch controls work and are tested, but two-player phone ergonomics are not a
-  v1 promise; the intended input remains one physical keyboard.
-- Success measures need real aggregate session data. No analytics were added,
-  so completion and replay rates are not collected in this privacy-first build.
-- Online multiplayer, chat, accounts, public scores, guns, user-created levels,
-  payments, and ads remain intentional non-goals from the brief.
+- The frame-rate claim is a reproducible throttled Chromium measurement, not a
+  physical mid-range phone measurement.
+- Completion and replay targets are not measured in production because the
+  game intentionally has no analytics.
+- Online matchmaking, chat, accounts, public scores, ads, payments, and
+  user-created courses remain explicit non-goals.
