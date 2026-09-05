@@ -5,7 +5,8 @@
 - Live URL: <https://one-screen-sprint.sociobot.in>
 - Artifact class: `browser-game`
 - Deployed implementation SHA: `7bf9d3d7da9e3508457059dec11cc98c664242a3`
-- Later verification-only SHA before this report: `cae5adc`
+- Verification-only test SHA: `cae5adc`
+- Handoff and evidence snapshot SHA: `a55248c`
 
 ## What shipped
 

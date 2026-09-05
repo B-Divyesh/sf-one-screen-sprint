@@ -13,4 +13,3 @@ x-dns-prefetch-control: off
 content-security-policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 permissions-policy: camera=(), microphone=(), geolocation=(), payment=()
 cross-origin-opener-policy: same-origin
-
