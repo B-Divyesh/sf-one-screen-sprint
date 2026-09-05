@@ -109,7 +109,7 @@ test('phone controls move a player and remain large enough to tap', async ({ bro
   await context.close();
 });
 
-test('@claim:demo-isolated keeps the sample namespace separate and resettable', async ({ page }) => {
+test('@claim:demo-isolated keeps the sample namespace separate, resets it, and discards it when leaving demo', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Settings' }).click();
   await page.getByRole('checkbox', { name: /Mute sound/ }).check();
@@ -124,8 +124,22 @@ test('@claim:demo-isolated keeps the sample namespace separate and resettable', 
   await page.getByRole('button', { name: 'Reset demo' }).click();
   await expect(page.locator('#score-one')).toHaveText('1');
   await expect(page.locator('#score-two')).toHaveText('1');
-  await page.getByRole('link', { name: 'Start for real' }).click();
+  await page.getByRole('button', { name: 'Settings' }).click();
+  await page.getByRole('checkbox', { name: /Mute sound/ }).check();
+  await page.getByRole('button', { name: 'Save settings' }).click();
+
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
   expect(await page.evaluate(() => localStorage.getItem('one-screen-sprint:settings'))).toBe(realBefore);
+  expect(await page.evaluate(() => Object.keys(localStorage).some((key) => key.startsWith('demo:one-screen-sprint:')))).toBe(false);
+
+  await page.goForward();
+  await expect(page).toHaveURL(/\/demo$/);
+  await page.getByRole('button', { name: 'Settings' }).click();
+  await expect(page.getByRole('checkbox', { name: /Mute sound/ })).not.toBeChecked();
+  await page.getByRole('button', { name: 'Cancel' }).click();
+
+  await page.goto('/privacy');
   expect(await page.evaluate(() => Object.keys(localStorage).some((key) => key.startsWith('demo:one-screen-sprint:')))).toBe(false);
 });
 

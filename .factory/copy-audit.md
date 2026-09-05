@@ -5,7 +5,7 @@ Every landing-page sentence, heading, label, state, and action is included.
 
 | Copy | Words | Result |
 | --- | ---: | --- |
-| `Two players · one keyboard · five minutes` | 6 | Pass |
+| `Two players · one keyboard · first to three wins` | 8 | Pass |
 | `Race a friend on one keyboard` | 6 | Pass |
 | `For two people together who want a short competitive game with readable controls and a new course each match.` | 19 | Pass |
 | `Try it with sample data` | 5 | Pass |

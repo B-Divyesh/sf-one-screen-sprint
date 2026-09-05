@@ -2,7 +2,7 @@
 
 Race a friend through a 75-second obstacle course on one keyboard. One Screen
 Sprint is for two people in the same room; the first player to win three rounds
-takes a best-of-five match. A full match usually takes four to six minutes.
+takes a best-of-five match.
 
 [Play the sample match](https://one-screen-sprint.sociobot.in/demo) or open the
 [live game](https://one-screen-sprint.sociobot.in/).
@@ -16,20 +16,21 @@ takes a best-of-five match. A full match usually takes four to six minutes.
 - A round lasts at most 75 seconds. If time ends, the player farther right wins.
 - Falling returns a player to their latest platform.
 
-Each match has a visible seed and a deterministic generated course. A new match
-makes different course geometry. The settings include mute, movement effects,
-and edge assist. Settings and a paused match persist in local browser storage.
+Each match has a visible seed and a deterministic generated course. Reusing a
+seed repeats its course; a new match makes different course geometry. The
+settings include mute, movement effects, and edge assist. Settings and a paused
+match persist in local browser storage.
 
-The game targets 60 rendered frames per second. The browser claim test measures
-at least 55 frames per second at a four-times CPU slowdown and a 390 × 844
+The game uses a fixed 60 Hz simulation. The browser claim test measures at least
+55 rendered frames per second at a four-times CPU slowdown and a 390 × 844
 viewport. Actual frame rate still depends on the device and browser.
 
 ## Sample and privacy
 
 The one-click sample starts at a realistic 1–1 score on course `CLUB-7`. Its
 banner remains visible, and Reset demo restores that starting point. Demo keys
-begin with `demo:one-screen-sprint:`. Starting for real removes those keys and
-does not change the real `one-screen-sprint:` namespace.
+begin with `demo:one-screen-sprint:`. Leaving demo removes those keys and does
+not change the real `one-screen-sprint:` namespace.
 
 There are no accounts, ads, analytics, remote opponents, or third-party runtime
 requests. The game works offline after its first successful visit. See

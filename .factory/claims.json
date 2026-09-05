@@ -25,7 +25,14 @@
     "claim": "A new match makes different deterministic course geometry.",
     "where": "landing audience, How to play, README",
     "test": "npm run test:unit -- --testNamePattern=@claim:fresh-course",
-    "sandbox": "generate two documented seeds and compare the resulting platform geometry"
+    "sandbox": "generate one documented seed twice and a second documented seed once; assert repeat geometry is equal and the new course differs"
+  },
+  {
+    "id": "fixed-60hz-simulation",
+    "claim": "The race simulation advances one second in 60 fixed updates.",
+    "where": "game footer, README",
+    "test": "npm run test:unit -- --testNamePattern=@claim:fixed-60hz-simulation",
+    "sandbox": "start a deterministic race and assert sixty simulation updates reduce the active race clock by exactly one second"
   },
   {
     "id": "round-limit",
@@ -60,7 +67,7 @@
     "claim": "The sample uses separate storage and reset does not change real saved data.",
     "where": "demo banner, privacy page, demo documentation",
     "test": "npm run test:browser -- --grep=@claim:demo-isolated",
-    "sandbox": "save a real setting; enter, change, and reset /demo; leave demo; compare real value and demo keys"
+    "sandbox": "save a real setting; enter, change, and reset /demo; leave with Browser Back; verify real data is unchanged, demo keys are gone, Forward starts a clean sample, and a direct route change also clears demo keys"
   },
   {
     "id": "local-only",

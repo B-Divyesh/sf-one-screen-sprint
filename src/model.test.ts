@@ -22,16 +22,23 @@ function begin(state: ReturnType<typeof createGame>): void {
 }
 
 describe('deterministic match model', () => {
-  it('generates the same playable geometry for the same seed', () => {
-    expect(createCourse('CLUB-7')).toEqual(createCourse('CLUB-7'));
-    expect(createCourse('CLUB-7').platforms).toHaveLength(6);
-    expect(createCourse('CLUB-7').anchors.length).toBeGreaterThanOrEqual(3);
+  it('@claim:fresh-course repeats same-seed geometry and changes geometry for a new match seed', () => {
+    const first = createCourse('CLUB-7');
+    const repeated = createCourse('CLUB-7');
+    const next = createCourse('RING-42');
+    expect(first).toEqual(repeated);
+    expect(first.platforms).toHaveLength(6);
+    expect(first.anchors.length).toBeGreaterThanOrEqual(3);
+    expect(courseSignature(next)).not.toBe(courseSignature(first));
   });
 
-  it('@claim:fresh-course creates different course geometry for a new match seed', () => {
-    const first = courseSignature(createCourse('CLUB-7'));
-    const second = courseSignature(createCourse('RING-42'));
-    expect(second).not.toBe(first);
+  it('@claim:fixed-60hz-simulation advances an active race by one second in sixty simulation updates', () => {
+    const game = createGame('CLOCK-60');
+    begin(game);
+    const initialTime = game.timeLeft;
+    for (let tick = 0; tick < 60; tick += 1) stepGame(game, idle, settings);
+    expect(game.phase).toBe('playing');
+    expect(initialTime - game.timeLeft).toBeCloseTo(1, 10);
   });
 
   it('ends a best-of-five as soon as one player wins three rounds', () => {

@@ -16,12 +16,15 @@ left. The course contains six platforms, four grapple rings, floor hazards,
 and a finish gate.
 
 The persistent banner reads “Demo — sample data, nothing is saved”. Reset demo
-removes only sample state and recreates the 1–1 starting point. Start for real
-discards the sample namespace before returning to the real game.
+removes only sample state and recreates the 1–1 starting point. Leaving demo
+with Start for real, browser history, or a direct in-site route discards the
+sample namespace. Reloading `/demo` keeps the current sample only in its own
+history entry.
 
 ## Isolation
 
 Demo storage keys begin with `demo:one-screen-sprint:`. Real storage keys begin
 with `one-screen-sprint:`. Demo mode never reads, writes, or removes the real
 namespace. The claim test starts with real settings, changes and resets the
-demo, then confirms the real value is unchanged.
+demo, leaves it with Browser Back, confirms the real value is unchanged, and
+checks that Forward starts a clean sample.
