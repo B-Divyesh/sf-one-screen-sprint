@@ -66,8 +66,8 @@
     "id": "movement-effects",
     "claim": "Movement effects add screen shake and directional paper flecks during a dash, and the setting turns both off.",
     "where": "settings",
-    "test": "npm run test:unit -- --testNamePattern=@claim:movement-effects",
-    "sandbox": "create a deterministic dashing player; assert nonzero shake and five trailing paper flecks when enabled, then assert both are absent when disabled or reduced motion is active"
+    "test": "npm run test:browser -- --grep=@claim:movement-effects",
+    "sandbox": "fresh /demo browser with a Canvas output probe; dash with effects enabled and assert paper flecks are drawn, then disable the setting, dash again, and assert no flecks are drawn"
   },
   {
     "id": "edge-assist",

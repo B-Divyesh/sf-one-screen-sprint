@@ -55,6 +55,22 @@ async function installAudioProbe(page: Page): Promise<void> {
   });
 }
 
+async function installPaperFleckProbe(page: Page): Promise<void> {
+  await page.addInitScript(() => {
+    const target = window as unknown as { __paperFlecks: number };
+    target.__paperFlecks = 0;
+    const original = CanvasRenderingContext2D.prototype.fillRect;
+    CanvasRenderingContext2D.prototype.fillRect = function fillRect(x, y, width, height) {
+      const color = String(this.fillStyle).toLowerCase();
+      if ((width === 5 || width === 8) && (height === 3 || height === 5) &&
+          (color === '#d94a3d' || color === '#176b87')) {
+        target.__paperFlecks += 1;
+      }
+      return original.call(this, x, y, width, height);
+    };
+  });
+}
+
 test('@claim:best-of-five-end @claim:restart-reset @claim:free-no-ads completes a deterministic sample match and resets the next course', async ({ page }) => {
   await page.goto('/demo');
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
@@ -131,6 +147,37 @@ test('@claim:mute-stops-tones stops game tones while preserving unmuted audio', 
   await expect(mutedPage.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
   expect(await mutedPage.evaluate(() => (window as unknown as { __toneStarts: number }).__toneStarts)).toBe(0);
   await mutedContext.close();
+});
+
+test('@claim:movement-effects draws paper flecks during a dash and turns them off in Settings', async ({ page }) => {
+  await installPaperFleckProbe(page);
+  await page.goto('/demo');
+  await page.getByRole('button', { name: 'Start sample round' }).first().click();
+  await page.locator('#race-canvas').focus();
+  await page.keyboard.down('KeyD');
+  await page.keyboard.down('KeyS');
+  await expect.poll(() => page.evaluate(() => (
+    window as unknown as { __paperFlecks: number }
+  ).__paperFlecks)).toBeGreaterThan(0);
+  await page.keyboard.up('KeyS');
+  await page.keyboard.up('KeyD');
+
+  await page.getByRole('button', { name: 'Reset demo' }).click();
+  await page.getByRole('button', { name: 'Settings' }).click();
+  await page.getByRole('checkbox', { name: /Movement effects/ }).uncheck();
+  await page.getByRole('button', { name: 'Save settings' }).click();
+  await page.evaluate(() => { (window as unknown as { __paperFlecks: number }).__paperFlecks = 0; });
+  await page.getByRole('button', { name: 'Start sample round' }).first().click();
+  await page.locator('#race-canvas').focus();
+  await page.keyboard.down('KeyD');
+  await page.keyboard.down('KeyS');
+  await expect(page.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
+  await page.waitForTimeout(250);
+  await page.keyboard.up('KeyS');
+  await page.keyboard.up('KeyD');
+  expect(await page.evaluate(() => (
+    window as unknown as { __paperFlecks: number }
+  ).__paperFlecks)).toBe(0);
 });
 
 test('@claim:key-rollover lets both players move at the same time', async ({ page }) => {

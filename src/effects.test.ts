@@ -3,7 +3,7 @@ import { movementEffectFrame } from './effects';
 import { createGame } from './model';
 
 describe('movement effects', () => {
-  it('@claim:movement-effects adds directional paper flecks and shake only when movement effects are allowed', () => {
+  it('adds directional paper flecks and shake only when movement effects are allowed', () => {
     const player = createGame('EFFECT-1').players[0];
     player.x = 240;
     player.vx = 455;
