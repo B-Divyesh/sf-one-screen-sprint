@@ -80,6 +80,9 @@ Fresh live browser contexts checked the actual deployed asset
 - A fresh real keyboard run used edge assist, reached active play, and ended at
   **Player 1 wins 3–0**. No page or console errors occurred.
 
+Live screenshots are in `.factory/evidence/repair-1/`: desktop first screen,
+phone first screen, and the real-match end screen.
+
 The existing throttled-Chromium `60-fps` claim remains part of the 14-command
 claim run. It measures at least 55 rendered fps at 390 × 844 with four-times
 CPU slowdown; the new claim separately covers the fixed simulation step.
