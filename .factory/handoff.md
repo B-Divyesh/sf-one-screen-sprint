@@ -38,6 +38,14 @@ The four independent-verification findings are resolved:
 `npm run check` now includes the declared-claim runner, so the ordinary quality
 gate executes every command listed in `.factory/claims.json`.
 
+## Earlier checks still passing
+
+`.factory/review-history.md` has no inherited report before the first release.
+The earlier implementation-history checks remain current: the phone first
+screen shows the canvas before scrolling, the designed missing route returns a
+real HTTP 404, and the browser suite still exercises the 44 px on-screen phone
+controls. The current live checks below reconfirm the first two outcomes.
+
 ## Verification
 
 From the documented clean setup (`npm ci`), the final implementation passed:
