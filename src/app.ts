@@ -409,6 +409,7 @@ function openSettings(current: GameSettings, demo: boolean, onSave: (settings: G
   assist.checked = current.assist;
   dialog.showModal();
   dialog.addEventListener('close', () => {
+    if (!dialog.isConnected || demo !== isDemoRoute()) return;
     if (dialog.returnValue === 'save') {
       const next = { muted: muted.checked, effects: effects.checked, assist: assist.checked };
       saveSettings(demo, next);
