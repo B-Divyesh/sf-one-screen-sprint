@@ -109,6 +109,69 @@ test('phone controls move a player and remain large enough to tap', async ({ bro
   await context.close();
 });
 
+test('phone pages keep essential text readable and every visible control at least 44 pixels', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+
+  for (const route of ['/', '/demo', '/privacy', '/terms', '/404.html']) {
+    await page.goto(route);
+    const undersizedTargets = await page.locator('a[href], button, input:not([type="hidden"]), select, textarea').evaluateAll((elements) => (
+      elements.flatMap((element) => {
+        const rect = element.getBoundingClientRect();
+        const style = getComputedStyle(element);
+        const visible = rect.width > 0 && rect.height > 0 && style.visibility !== 'hidden' && style.display !== 'none';
+        if (!visible || (rect.width >= 44 && rect.height >= 44)) return [];
+        return [{
+          name: element.getAttribute('aria-label') ?? element.textContent?.trim() ?? element.tagName,
+          width: rect.width,
+          height: rect.height,
+        }];
+      })
+    ));
+    expect(undersizedTargets, `${route} has undersized touch targets`).toEqual([]);
+  }
+
+  await page.goto('/');
+  for (const selector of ['.audience', '.hero-actions span', '.plain-facts', '.game-foot', '.site-footer', '.site-header nav a', 'button']) {
+    const fontSize = await page.locator(selector).evaluateAll((elements) => Math.min(
+      ...elements.filter((element) => element.getClientRects().length > 0)
+        .map((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+    ));
+    expect(fontSize, `${selector} is smaller than 17 CSS pixels`).toBeGreaterThanOrEqual(17);
+  }
+  const gameBox = await page.locator('.canvas-stage').boundingBox();
+  expect(gameBox?.y).toBeLessThan(844);
+  await expect(page.getByRole('heading', { name: 'Race a friend on one keyboard' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Try it with sample data' })).toBeVisible();
+
+  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  const resized = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+    actionVisible: Boolean(document.querySelector('.primary-action')?.getClientRects().length),
+    canvasVisible: Boolean(document.querySelector('#race-canvas')?.getClientRects().length),
+  }));
+  expect(resized.scrollWidth).toBeLessThanOrEqual(resized.clientWidth + 1);
+  expect(resized.actionVisible).toBe(true);
+  expect(resized.canvasVisible).toBe(true);
+
+  await context.close();
+});
+
+test('standalone 404 uses the standard navigation and footer structure', async ({ page }) => {
+  await page.goto('/404.html');
+  await expect(page.getByRole('heading', { name: 'Find the race from the start' })).toBeVisible();
+  await expect(page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link')).toHaveText([
+    'Demo',
+    'How it works',
+    'Privacy',
+  ]);
+  const footer = page.locator('footer');
+  await expect(footer).toContainText('Race a friend on one keyboard in rounds under 75 seconds.');
+  await expect(footer.getByRole('link', { name: /Built by Param Factory/ })).toBeVisible();
+  await expect(footer).toContainText('Version 1.0.0');
+});
+
 test('@claim:demo-isolated keeps the sample namespace separate, resets it, and discards it when leaving demo', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Settings' }).click();
