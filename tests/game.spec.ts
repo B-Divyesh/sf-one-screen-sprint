@@ -91,6 +91,24 @@ test('@claim:key-rollover lets both players move at the same time', async ({ pag
   expect(Number(await page.locator('#progress-two').getAttribute('value'))).toBeGreaterThan(Number(secondStart));
 });
 
+test('phone controls move a player and remain large enough to tap', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+  const page = await context.newPage();
+  await page.goto('/demo');
+  await enableAssist(page);
+  await page.getByRole('button', { name: 'Start sample round' }).first().click();
+  const right = page.getByRole('button', { name: 'P1 move right' });
+  const box = await right.boundingBox();
+  expect(box?.width).toBeGreaterThanOrEqual(44);
+  expect(box?.height).toBeGreaterThanOrEqual(44);
+  const start = Number(await page.locator('#progress-one').getAttribute('value'));
+  await right.dispatchEvent('pointerdown', { pointerId: 1, pointerType: 'touch' });
+  await page.waitForTimeout(3400);
+  await right.dispatchEvent('pointerup', { pointerId: 1, pointerType: 'touch' });
+  expect(Number(await page.locator('#progress-one').getAttribute('value'))).toBeGreaterThan(start);
+  await context.close();
+});
+
 test('@claim:demo-isolated keeps the sample namespace separate and resettable', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Settings' }).click();
