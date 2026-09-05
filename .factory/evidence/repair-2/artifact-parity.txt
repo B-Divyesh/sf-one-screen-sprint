@@ -1,0 +1,20 @@
+Implementation: 64d2f15df3a821c268e7113e6c82d4f1b5a365f8
+Live URL: https://one-screen-sprint.sociobot.in
+Checked: 2026-09-05 UTC
+
+Every deployable file in dist except the host-only staticwebapp.config.json
+matched the live response byte for byte by SHA-256:
+
+e7161952955c3c582070971171dfc0b42b8772d84e3b3ac6153b22e72a94bee7  404.css
+586d2bdce96e0343f9c6c66e36bb5fb2e846566c6d3886ee69d7155ff31025b2  404.html
+fea61392a59477f99708d1ded785682fcfac9df6191ee4e2b97616a334fcbeb7  apple-touch-icon.png
+b965d5d250137d61ff3843790b24e70c957c04e63197cbdace1c1a18ea8c0e4d  art/one-screen-sprint-social.jpg
+46a1771e1ec0bd0434ccb5ef2d4ebeb48388d13b8f972eefa610c6887077022e  art/race-poster.webp
+efdf8417edc8b2543fd59a0218b5a020497943cce187ac38b7c33fc93a50d545  assets/index-CHrWqm2_.css
+9ad00c05dd876ff194a3f600947b25464acd63cd457e8ae08b7c93b6c0d04507  assets/index-NRTjOErr.js
+8080c36f78a2f83480fca8ca10dc07881922ca1124ebaac4ef016f34ff7f80e3  assets/index-NRTjOErr.js.map
+ecb445d154c0ed356e79fb9f6f6624e6506c844cf3d3532c68f39cdcf78adf6a  favicon.svg
+93de73116ebfadd010e0807422ebc14646cb3e980db737c5e6defd1458fa4ebd  index.html
+626894012d4696f0ef9badd65164f2654e7e7bb364a0ba028f8c62558b108561  robots.txt
+83f425a67a82a49d7501c59fb908df82c7a0a8b710bece26872525be0610e33f  sitemap.xml
+716e8375fbe767a3309ff30301345a357f1d1a19a4dc72c9c7fd7029fead4234  sw.js
