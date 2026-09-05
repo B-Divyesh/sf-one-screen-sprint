@@ -6,6 +6,7 @@
 - Live URL: <https://one-screen-sprint.sociobot.in>
 - Implementation and deployed SHA: `6584718359bf7ca6daff94c7c3b9ff8126e7c82b`
 - Claim and regression-test SHA: `712281c7cd49690757c9409ac7d26c6799565425`
+- Evidence and handoff content SHA: `f384f55d79857f293ed0e8605fca8281381888cf`
 - Previous report: `.factory/verification-3.md`
 - Repair evidence: `.factory/evidence/repair-3/`
 
