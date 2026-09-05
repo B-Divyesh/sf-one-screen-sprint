@@ -115,6 +115,7 @@ test('@claim:demo-isolated keeps the sample namespace separate, resets it, and d
   await page.getByRole('checkbox', { name: /Mute sound/ }).check();
   await page.getByRole('button', { name: 'Save settings' }).click();
   const realBefore = await page.evaluate(() => localStorage.getItem('one-screen-sprint:settings'));
+  expect(realBefore).toContain('"muted":true');
 
   await page.getByRole('link', { name: 'Try it with sample data' }).click();
   await expect(page).toHaveURL(/\/demo$/);

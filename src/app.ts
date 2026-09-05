@@ -399,25 +399,25 @@ function mountGame(demo: boolean): void {
 function openSettings(current: GameSettings, demo: boolean, onSave: (settings: GameSettings) => void): void {
   const dialog = document.querySelector<HTMLDialogElement>('#settings-dialog');
   if (!dialog) return;
+  const form = dialog.querySelector<HTMLFormElement>('form');
   controller?.pause();
   const muted = dialog.querySelector<HTMLInputElement>('input[name="muted"]');
   const effects = dialog.querySelector<HTMLInputElement>('input[name="effects"]');
   const assist = dialog.querySelector<HTMLInputElement>('input[name="assist"]');
-  if (!muted || !effects || !assist) return;
+  if (!form || !muted || !effects || !assist) return;
   muted.checked = current.muted;
   effects.checked = current.effects;
   assist.checked = current.assist;
   dialog.showModal();
-  dialog.addEventListener('close', () => {
-    if (!dialog.isConnected || demo !== isDemoRoute()) return;
-    if (dialog.returnValue === 'save') {
-      const next = { muted: muted.checked, effects: effects.checked, assist: assist.checked };
-      saveSettings(demo, next);
-      if (demo) saveDemoSnapshot();
-      onSave(next);
-      const announcement = document.querySelector('#game-announcement');
-      if (announcement) announcement.textContent = 'Settings saved.';
-    }
+  form.addEventListener('submit', (event) => {
+    const submitter = (event as SubmitEvent).submitter as HTMLButtonElement | null;
+    if (submitter?.value !== 'save' || !dialog.isConnected || demo !== isDemoRoute()) return;
+    const next = { muted: muted.checked, effects: effects.checked, assist: assist.checked };
+    saveSettings(demo, next);
+    if (demo) saveDemoSnapshot();
+    onSave(next);
+    const announcement = document.querySelector('#game-announcement');
+    if (announcement) announcement.textContent = 'Settings saved.';
   }, { once: true });
 }
 
