@@ -1,0 +1,50 @@
+{
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "h1": "Race a friend on one keyboard",
+      "seriousOrCritical": [],
+      "errors": []
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — One Screen Sprint",
+      "h1": "Race a friend on one keyboard",
+      "seriousOrCritical": [],
+      "errors": []
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — One Screen Sprint",
+      "h1": "See what this game stores",
+      "seriousOrCritical": [],
+      "errors": []
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — One Screen Sprint",
+      "h1": "Play the game fairly and safely",
+      "seriousOrCritical": [],
+      "errors": []
+    },
+    "/not-a-route": {
+      "status": 404,
+      "title": "Page not found — One Screen Sprint",
+      "h1": "Find the race from the start",
+      "seriousOrCritical": [],
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ]
+    }
+  },
+  "run": {
+    "end": "Player 1 wins 3–1",
+    "score": [
+      "3",
+      "1"
+    ],
+    "course": "COURSE CLUB-7",
+    "banner": "Demo — sample data, nothing is saved"
+  }
+}

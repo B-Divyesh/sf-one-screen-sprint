@@ -1,0 +1,38 @@
+{
+  "desktop": {
+    "title": "Demo — One Screen Sprint",
+    "h1": "Race a friend on one keyboard",
+    "primary": "Start sample round",
+    "canvas": {
+      "x": 507.828125,
+      "y": 388.796875,
+      "width": 905.171875,
+      "height": 509.15625
+    },
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "gameVisibleBeforeScroll": true,
+    "touchControls": "none",
+    "errors": []
+  },
+  "phone": {
+    "title": "Demo — One Screen Sprint",
+    "h1": "Race a friend on one keyboard",
+    "primary": "Start sample round",
+    "canvas": {
+      "x": 15,
+      "y": 608.09375,
+      "width": 355,
+      "height": 199.6875
+    },
+    "viewport": {
+      "width": 390,
+      "height": 664
+    },
+    "gameVisibleBeforeScroll": true,
+    "touchControls": "grid",
+    "errors": []
+  }
+}
