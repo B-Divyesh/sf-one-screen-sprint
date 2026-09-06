@@ -22,7 +22,8 @@ The detached candidate checkout passed `npm ci`, `npm run check`, and
 `npm audit --audit-level=moderate`: 8 unit tests, 16 browser tests, all 17
 declared claim commands, copy audit, build, and audit. Live shell and asset
 hashes match the candidate build. Playwright axe found zero violations across
-the app routes and 404; fresh live browser contexts found no console errors.
+the app routes and 404; the required live URL verifier passed on `/`, `/demo`,
+`/privacy`, and `/terms` with no console or baseline semantic errors.
 
 ## How to verify
 

@@ -86,6 +86,10 @@ document contained no additional public claim missing from `.factory/claims.json
   modal settings, Escape pause/resume, route-heading focus, reduced motion,
   corrupt-local-state recovery, and privacy deletion are covered by passing
   browser tests.
+- `/opt/fleet/lib/verify-url.sh` passed on live `/`, `/demo`, `/privacy`, and
+  `/terms`: each was HTTP 200 with no console error, `lang=en`, one H1, a main
+  landmark, no missing image alternatives, and no unnamed button. Its captured
+  evidence is in `/work/.evidence/review-1-url/`.
 - The game made no cross-origin request during the complete sample flow. It
   reloaded offline after a successful first visit in its separate browser
   context. The live 390 × 844, four-times-CPU-throttled frame sample measured
