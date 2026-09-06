@@ -1,0 +1,291 @@
+{
+  "checkedAt": "2026-09-06T00:35:26.642Z",
+  "runtimeImplementation": "6584718359bf7ca6daff94c7c3b9ff8126e7c82b",
+  "documentationCommit": "f9a178b0e96989240e69bc0be7b237856319b560",
+  "firstScreen": {
+    "desktop": {
+      "scrollY": 0,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard",
+      "audience": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "action": "Try it with sample data",
+      "actionNote": "Loads a fixed 1–1 rematch.",
+      "facts": [
+        "Two local players. No account or online opponent.",
+        "75 seconds per round. First to three wins.",
+        "Free. No ads. Works offline after the first visit."
+      ],
+      "game": {
+        "top": 336.796875,
+        "bottom": 845.953125,
+        "width": 905.171875,
+        "height": 509.15625
+      },
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "phone": {
+      "scrollY": 0,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard",
+      "audience": "For two people together who want a short competitive game with readable controls and a new course each match.",
+      "action": "Try it with sample data",
+      "actionNote": "Loads a fixed 1–1 rematch.",
+      "facts": [
+        "Two local players. No account or online opponent.",
+        "75 seconds per round. First to three wins.",
+        "Free. No ads. Works offline after the first visit."
+      ],
+      "game": {
+        "top": 655.5625,
+        "bottom": 855.25,
+        "width": 355,
+        "height": 199.6875
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "sample": {
+    "entry": {
+      "course": "CLUB-7",
+      "score": [
+        1,
+        1
+      ],
+      "round": 3
+    },
+    "simultaneousProgress": {
+      "before": {
+        "p1": 6,
+        "p2": 11
+      },
+      "after": {
+        "p1": 36,
+        "p2": 40
+      }
+    },
+    "end": "Player 1 wins 3–1",
+    "persistentSampleLabel": true,
+    "reset": {
+      "score": [
+        "1",
+        "1"
+      ],
+      "round": "Round 3 of 5",
+      "course": "Course CLUB-7"
+    },
+    "realDataUnchanged": true,
+    "crossOriginRequests": []
+  },
+  "movementEffects": {
+    "enabled": {
+      "paperFlecks": 40,
+      "transformSamples": 16,
+      "horizontalRange": 3.824444622404193
+    },
+    "disabled": {
+      "paperFlecks": 0,
+      "transformSamples": 15,
+      "horizontalRange": 0
+    },
+    "reducedMotion": {
+      "paperFlecks": 0,
+      "transformSamples": 16,
+      "horizontalRange": 0
+    }
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "heading": "Race a friend on one keyboard"
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — One Screen Sprint",
+      "heading": "Race a friend on one keyboard"
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — One Screen Sprint",
+      "heading": "See what this game stores"
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — One Screen Sprint",
+      "heading": "Play the game fairly and safely"
+    },
+    "/verification-5-missing": {
+      "status": 404,
+      "title": "Page not found — One Screen Sprint",
+      "heading": "Find the race from the start"
+    }
+  },
+  "accessibility": {
+    "phone": {
+      "routes": {
+        "/": {
+          "undersizedTargets": 0
+        },
+        "/demo": {
+          "undersizedTargets": 0
+        },
+        "/privacy": {
+          "undersizedTargets": 0
+        },
+        "/terms": {
+          "undersizedTargets": 0
+        },
+        "/404.html": {
+          "undersizedTargets": 0
+        }
+      },
+      "essentialFontSizes": {
+        ".audience": 17,
+        ".hero-actions span": 17,
+        ".plain-facts": 17,
+        ".game-foot": 17,
+        ".site-footer": 17,
+        ".site-header nav a": 17,
+        "button": 17
+      },
+      "reflow": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "actionVisible": true,
+        "canvasVisible": true
+      }
+    },
+    "/": {
+      "violations": 0
+    },
+    "/demo": {
+      "violations": 0
+    },
+    "/privacy": {
+      "violations": 0
+    },
+    "/terms": {
+      "violations": 0
+    },
+    "/verification-5-missing": {
+      "violations": 0
+    },
+    "reducedMotion": true,
+    "keyboard": {
+      "skipLink": true,
+      "focusStyle": {
+        "outlineStyle": "solid",
+        "outlineWidth": "4px",
+        "outlineColor": "rgb(0, 95, 204)"
+      },
+      "dialogModal": true,
+      "escapeRestoredFocus": true,
+      "routeFocus": true
+    }
+  },
+  "privacy": {
+    "clearSavedData": {
+      "announced": true,
+      "remainingRealKeys": []
+    }
+  },
+  "links": {
+    "internal": [
+      {
+        "href": "/",
+        "status": 200
+      },
+      {
+        "href": "/demo",
+        "status": 200
+      },
+      {
+        "href": "/privacy",
+        "status": 200
+      },
+      {
+        "href": "/terms",
+        "status": 200
+      }
+    ]
+  },
+  "offline": {
+    "registration": {
+      "active": true,
+      "scope": "https://one-screen-sprint.sociobot.in/"
+    },
+    "bannerVisible": true,
+    "canvasVisible": true
+  },
+  "performance": {
+    "frameRate": {
+      "sampleCount": 89,
+      "medianMs": 16.699999999999818,
+      "fps": 59.88023952095874
+    }
+  },
+  "artifactParity": {
+    "matched": 13,
+    "files": [
+      {
+        "file": "404.css",
+        "sha256": "e7161952955c3c582070971171dfc0b42b8772d84e3b3ac6153b22e72a94bee7"
+      },
+      {
+        "file": "404.html",
+        "sha256": "586d2bdce96e0343f9c6c66e36bb5fb2e846566c6d3886ee69d7155ff31025b2"
+      },
+      {
+        "file": "apple-touch-icon.png",
+        "sha256": "fea61392a59477f99708d1ded785682fcfac9df6191ee4e2b97616a334fcbeb7"
+      },
+      {
+        "file": "art/one-screen-sprint-social.jpg",
+        "sha256": "b965d5d250137d61ff3843790b24e70c957c04e63197cbdace1c1a18ea8c0e4d"
+      },
+      {
+        "file": "art/race-poster.webp",
+        "sha256": "46a1771e1ec0bd0434ccb5ef2d4ebeb48388d13b8f972eefa610c6887077022e"
+      },
+      {
+        "file": "assets/index-CHrWqm2_.css",
+        "sha256": "efdf8417edc8b2543fd59a0218b5a020497943cce187ac38b7c33fc93a50d545"
+      },
+      {
+        "file": "assets/index-D6JdjjWx.js",
+        "sha256": "fd3bc95a59dfd68720f67c2769cb09b5ee1782ca5467958f230be46addd3cfd9"
+      },
+      {
+        "file": "assets/index-D6JdjjWx.js.map",
+        "sha256": "13b93d58b3b964755d126d767804d658543ba414dc32757e3eacce59a4f8ebb0"
+      },
+      {
+        "file": "favicon.svg",
+        "sha256": "ecb445d154c0ed356e79fb9f6f6624e6506c844cf3d3532c68f39cdcf78adf6a"
+      },
+      {
+        "file": "index.html",
+        "sha256": "f4f6f678316a84efbdddf3987658876cd1c295155d6d40a5e297ca5ae63b62d6"
+      },
+      {
+        "file": "robots.txt",
+        "sha256": "626894012d4696f0ef9badd65164f2654e7e7bb364a0ba028f8c62558b108561"
+      },
+      {
+        "file": "sitemap.xml",
+        "sha256": "83f425a67a82a49d7501c59fb908df82c7a0a8b710bece26872525be0610e33f"
+      },
+      {
+        "file": "sw.js",
+        "sha256": "b39ecf33825d239b33e032aae6b1dfca665901660f5d54dc467368c828b522c7"
+      }
+    ]
+  },
+  "consoleErrors": []
+}

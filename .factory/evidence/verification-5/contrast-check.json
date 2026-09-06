@@ -1,0 +1,57 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "color": "rgb(255, 248, 233)",
+    "backgroundColor": "rgb(217, 74, 61)",
+    "fontSize": "15.2px",
+    "fontWeight": "400",
+    "contrastRatio": 3.97331400113597,
+    "requiredRatio": 4.5,
+    "passes": false
+  },
+  {
+    "route": "/demo",
+    "status": 200,
+    "color": "rgb(255, 248, 233)",
+    "backgroundColor": "rgb(217, 74, 61)",
+    "fontSize": "15.2px",
+    "fontWeight": "400",
+    "contrastRatio": 3.97331400113597,
+    "requiredRatio": 4.5,
+    "passes": false
+  },
+  {
+    "route": "/privacy",
+    "status": 200,
+    "color": "rgb(255, 248, 233)",
+    "backgroundColor": "rgb(217, 74, 61)",
+    "fontSize": "15.2px",
+    "fontWeight": "400",
+    "contrastRatio": 3.97331400113597,
+    "requiredRatio": 4.5,
+    "passes": false
+  },
+  {
+    "route": "/terms",
+    "status": 200,
+    "color": "rgb(255, 248, 233)",
+    "backgroundColor": "rgb(217, 74, 61)",
+    "fontSize": "15.2px",
+    "fontWeight": "400",
+    "contrastRatio": 3.97331400113597,
+    "requiredRatio": 4.5,
+    "passes": false
+  },
+  {
+    "route": "/verification-5-missing",
+    "status": 404,
+    "color": "rgb(255, 248, 233)",
+    "backgroundColor": "rgb(217, 74, 61)",
+    "fontSize": "15.2px",
+    "fontWeight": "900",
+    "contrastRatio": 3.97331400113597,
+    "requiredRatio": 4.5,
+    "passes": false
+  }
+]
