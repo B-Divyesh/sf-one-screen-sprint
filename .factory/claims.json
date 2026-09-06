@@ -67,7 +67,7 @@
     "claim": "Movement effects add screen shake and directional paper flecks during a dash, and the setting turns both off.",
     "where": "settings",
     "test": "npm run test:browser -- --grep=@claim:movement-effects",
-    "sandbox": "fresh /demo browser with a Canvas output probe; dash with effects enabled and assert paper flecks are drawn, then disable the setting, dash again, and assert no flecks are drawn"
+    "sandbox": "fresh /demo browser with a Canvas output probe; dash with effects enabled and assert paper flecks plus changing horizontal course transforms, then disable the setting, dash again, and assert neither output occurs"
   },
   {
     "id": "edge-assist",
@@ -95,7 +95,7 @@
     "claim": "The game sends no game or identity data to another origin.",
     "where": "privacy page, README",
     "test": "npm run test:browser -- --grep=@claim:local-only",
-    "sandbox": "record every request while changing a setting and starting /demo; assert every request is same-origin"
+    "sandbox": "record every request from fresh /demo through a deterministic 3–1 match end, reset, and demo exit; assert every request is same-origin"
   },
   {
     "id": "offline-reload",

@@ -55,19 +55,29 @@ async function installAudioProbe(page: Page): Promise<void> {
   });
 }
 
-async function installPaperFleckProbe(page: Page): Promise<void> {
+async function installMovementEffectProbe(page: Page): Promise<void> {
   await page.addInitScript(() => {
-    const target = window as unknown as { __paperFlecks: number };
-    target.__paperFlecks = 0;
+    const target = window as unknown as {
+      __movementEffectOutput: { paperFlecks: number; horizontalTransforms: number[] };
+    };
+    target.__movementEffectOutput = { paperFlecks: 0, horizontalTransforms: [] };
     const original = CanvasRenderingContext2D.prototype.fillRect;
     CanvasRenderingContext2D.prototype.fillRect = function fillRect(x, y, width, height) {
       const color = String(this.fillStyle).toLowerCase();
       if ((width === 5 || width === 8) && (height === 3 || height === 5) &&
           (color === '#d94a3d' || color === '#176b87')) {
-        target.__paperFlecks += 1;
+        target.__movementEffectOutput.paperFlecks += 1;
       }
       return original.call(this, x, y, width, height);
     };
+
+    const originalSetTransform = CanvasRenderingContext2D.prototype.setTransform;
+    CanvasRenderingContext2D.prototype.setTransform = function setTransform(...args: unknown[]) {
+      if (this.canvas.id === 'race-canvas' && args.length === 6 && typeof args[4] === 'number') {
+        target.__movementEffectOutput.horizontalTransforms.push(args[4]);
+      }
+      return Reflect.apply(originalSetTransform, this, args);
+    } as typeof CanvasRenderingContext2D.prototype.setTransform;
   });
 }
 
@@ -149,35 +159,65 @@ test('@claim:mute-stops-tones stops game tones while preserving unmuted audio', 
   await mutedContext.close();
 });
 
-test('@claim:movement-effects draws paper flecks during a dash and turns them off in Settings', async ({ page }) => {
-  await installPaperFleckProbe(page);
+test('@claim:movement-effects draws paper flecks and shakes the course during a dash, then turns both off', async ({ page }) => {
+  await installMovementEffectProbe(page);
   await page.goto('/demo');
   await page.getByRole('button', { name: 'Start sample round' }).first().click();
+  await expect(page.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
+  await page.evaluate(() => {
+    (window as unknown as {
+      __movementEffectOutput: { paperFlecks: number; horizontalTransforms: number[] };
+    }).__movementEffectOutput = { paperFlecks: 0, horizontalTransforms: [] };
+  });
   await page.locator('#race-canvas').focus();
   await page.keyboard.down('KeyD');
   await page.keyboard.down('KeyS');
   await expect.poll(() => page.evaluate(() => (
-    window as unknown as { __paperFlecks: number }
-  ).__paperFlecks)).toBeGreaterThan(0);
+    window as unknown as {
+      __movementEffectOutput: { paperFlecks: number };
+    }
+  ).__movementEffectOutput.paperFlecks)).toBeGreaterThan(0);
+  await page.waitForTimeout(180);
   await page.keyboard.up('KeyS');
   await page.keyboard.up('KeyD');
+  const enabledOutput = await page.evaluate(() => (
+    window as unknown as {
+      __movementEffectOutput: { paperFlecks: number; horizontalTransforms: number[] };
+    }
+  ).__movementEffectOutput);
+  expect(enabledOutput.paperFlecks).toBeGreaterThan(0);
+  expect(enabledOutput.horizontalTransforms.length).toBeGreaterThan(2);
+  expect(
+    Math.max(...enabledOutput.horizontalTransforms) - Math.min(...enabledOutput.horizontalTransforms),
+  ).toBeGreaterThan(0.5);
 
   await page.getByRole('button', { name: 'Reset demo' }).click();
   await page.getByRole('button', { name: 'Settings' }).click();
   await page.getByRole('checkbox', { name: /Movement effects/ }).uncheck();
   await page.getByRole('button', { name: 'Save settings' }).click();
-  await page.evaluate(() => { (window as unknown as { __paperFlecks: number }).__paperFlecks = 0; });
   await page.getByRole('button', { name: 'Start sample round' }).first().click();
+  await expect(page.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
+  await page.evaluate(() => {
+    (window as unknown as {
+      __movementEffectOutput: { paperFlecks: number; horizontalTransforms: number[] };
+    }).__movementEffectOutput = { paperFlecks: 0, horizontalTransforms: [] };
+  });
   await page.locator('#race-canvas').focus();
   await page.keyboard.down('KeyD');
   await page.keyboard.down('KeyS');
-  await expect(page.locator('#game-overlay')).toBeHidden({ timeout: 5_000 });
   await page.waitForTimeout(250);
   await page.keyboard.up('KeyS');
   await page.keyboard.up('KeyD');
-  expect(await page.evaluate(() => (
-    window as unknown as { __paperFlecks: number }
-  ).__paperFlecks)).toBe(0);
+  const disabledOutput = await page.evaluate(() => (
+    window as unknown as {
+      __movementEffectOutput: { paperFlecks: number; horizontalTransforms: number[] };
+    }
+  ).__movementEffectOutput);
+  expect(disabledOutput.paperFlecks).toBe(0);
+  expect(disabledOutput.horizontalTransforms.length).toBeGreaterThan(2);
+  expect(
+    Math.max(...disabledOutput.horizontalTransforms) - Math.min(...disabledOutput.horizontalTransforms),
+  ).toBeLessThan(0.01);
 });
 
 test('@claim:key-rollover lets both players move at the same time', async ({ page }) => {
@@ -313,18 +353,31 @@ test('@claim:demo-isolated keeps the sample namespace separate, resets it, and d
   expect(await page.evaluate(() => Object.keys(localStorage).some((key) => key.startsWith('demo:one-screen-sprint:')))).toBe(false);
 });
 
-test('@claim:local-only sends no cross-origin requests during the sample flow', async ({ page }) => {
+test('@claim:local-only sends no cross-origin requests through match end, reset, and demo exit', async ({ page }) => {
   const crossOrigin: string[] = [];
   page.on('request', (request) => {
     const url = new URL(request.url());
     if (url.origin !== 'http://127.0.0.1:4173') crossOrigin.push(request.url());
   });
   await page.goto('/demo');
-  await page.getByRole('button', { name: 'Settings' }).click();
-  await page.getByRole('checkbox', { name: /Mute sound/ }).check();
-  await page.getByRole('button', { name: 'Save settings' }).click();
+  await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
+  await enableAssist(page);
   await page.getByRole('button', { name: 'Start sample round' }).first().click();
-  await page.waitForTimeout(500);
+  await racePlayerOne(page);
+  await page.getByRole('button', { name: 'Start next round' }).click();
+  await racePlayerOne(page);
+  await expect(page.getByText('Match complete')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Player 1 wins 3–1' })).toBeVisible();
+  await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
+
+  await page.getByRole('button', { name: 'Reset demo' }).click();
+  await expect(page.locator('#score-one')).toHaveText('1');
+  await expect(page.locator('#score-two')).toHaveText('1');
+  await expect(page.locator('#course-label')).toHaveText('Course CLUB-7');
+  await page.getByRole('link', { name: 'Start for real' }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByText('Demo — sample data, nothing is saved')).toHaveCount(0);
+  await page.waitForTimeout(250);
   expect(crossOrigin).toEqual([]);
 });
 
