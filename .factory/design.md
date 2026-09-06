@@ -22,6 +22,7 @@ Single light treatment, painted explicitly to preserve the poster identity:
 - Night ink / text: `#152D2F`
 - Muted ink: `#526566`
 - Player one coral: `#D94A3D`
+- Deep coral for small reversed text: `#C43C32`
 - Player two blue: `#176B87`
 - Course lime: `#B8D638`
 - Warning ochre: `#A85A00`
@@ -30,6 +31,8 @@ Single light treatment, painted explicitly to preserve the poster identity:
 
 Body text and controls use night ink on paper or ink surface. The player
 colours are always paired with `P1` and `P2`, so colour is not the only cue.
+The home-mark numeral uses ink-surface text on deep coral at 4.91:1. The
+brighter player-one coral remains reserved for large labels and game shapes.
 
 ## Type and spacing
 

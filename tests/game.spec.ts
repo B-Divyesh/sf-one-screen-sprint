@@ -81,6 +81,24 @@ async function installMovementEffectProbe(page: Page): Promise<void> {
   });
 }
 
+function relativeLuminance(rgb: number[]): number {
+  const [red = 0, green = 0, blue = 0] = rgb.map((value) => {
+    const channel = value / 255;
+    return channel <= 0.04045
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4;
+  });
+  return (0.2126 * red) + (0.7152 * green) + (0.0722 * blue);
+}
+
+function contrastRatio(foreground: number[], background: number[]): number {
+  const foregroundLuminance = relativeLuminance(foreground);
+  const backgroundLuminance = relativeLuminance(background);
+  const lighter = Math.max(foregroundLuminance, backgroundLuminance);
+  const darker = Math.min(foregroundLuminance, backgroundLuminance);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 test('@claim:best-of-five-end @claim:restart-reset @claim:free-no-ads completes a deterministic sample match and resets the next course', async ({ page }) => {
   await page.goto('/demo');
   await expect(page.getByText('Demo — sample data, nothing is saved')).toBeVisible();
@@ -302,6 +320,26 @@ test('phone pages keep essential text readable and every visible control at leas
   expect(resized.canvasVisible).toBe(true);
 
   await context.close();
+});
+
+test('home mark text meets normal-text contrast on every page', async ({ page }) => {
+  for (const route of ['/', '/demo', '/privacy', '/terms', '/404.html']) {
+    await page.goto(route);
+    const colors = await page.locator('.wordmark-number').evaluate((element) => {
+      const style = getComputedStyle(element);
+      const parseRgb = (value: string): number[] => (
+        value.match(/[\d.]+/g)?.slice(0, 3).map(Number) ?? []
+      );
+      return {
+        foreground: parseRgb(style.color),
+        background: parseRgb(style.backgroundColor),
+      };
+    });
+    expect(
+      contrastRatio(colors.foreground, colors.background),
+      `${route} home-mark numeral contrast`,
+    ).toBeGreaterThanOrEqual(4.5);
+  }
 });
 
 test('standalone 404 uses the standard navigation and footer structure', async ({ page }) => {

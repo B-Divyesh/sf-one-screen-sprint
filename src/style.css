@@ -9,6 +9,7 @@
   --ink: #152d2f;
   --muted: #526566;
   --coral: #d94a3d;
+  --deep-coral: #c43c32;
   --blue: #176b87;
   --lime: #b8d638;
   --warning: #a85a00;
@@ -206,7 +207,7 @@ main {
   height: 37px;
   place-items: center;
   border: 2px solid var(--ink);
-  background: var(--coral);
+  background: var(--deep-coral);
   box-shadow: 3px 3px 0 var(--blue);
   color: var(--surface);
 }
