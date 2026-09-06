@@ -6,7 +6,7 @@
 - Live URL: <https://one-screen-sprint.sociobot.in>
 - Runtime implementation: `6584718359bf7ca6daff94c7c3b9ff8126e7c82b`
 - Claim-test repair: `4bbd8d0ce684f5cbc9f3d101e340e89c5ddbae04`
-- Documentation and evidence: recorded by the follow-up identity commit
+- Documentation and evidence: `57b68b55a2622cd1939712c4a0c0cce4c250d75c`
 - Deployment ID: `b17e6d86-2b48-4470-80bb-535a1b868864`
 
 ## Outcome
