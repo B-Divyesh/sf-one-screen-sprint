@@ -423,7 +423,15 @@ test('@claim:offline-reload reloads the sample after the first visit with no net
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto('/demo');
+  await page.evaluate(async () => {
+    const registration = await navigator.serviceWorker.ready;
+    const obsolete = await caches.open('one-screen-sprint-v3');
+    await obsolete.put('/obsolete-shell', new Response('old release'));
+    await registration.unregister();
+  });
+  await page.reload();
   await page.evaluate(async () => navigator.serviceWorker.ready);
+  await expect.poll(() => page.evaluate(async () => (await caches.keys()).includes('one-screen-sprint-v3'))).toBe(false);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Race a friend on one keyboard' })).toBeVisible();
   await context.setOffline(true);

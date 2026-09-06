@@ -102,7 +102,7 @@
     "claim": "The game works offline after the first successful visit.",
     "where": "landing facts, README",
     "test": "npm run test:browser -- --grep=@claim:offline-reload",
-    "sandbox": "own fresh browser context; load /demo; wait for service worker; reload once; set context offline; reload and assert game and sample banner"
+    "sandbox": "own fresh browser context; load /demo; seed an obsolete release cache; reinstall the service worker; assert the old cache is removed; set context offline; reload and assert game and sample banner"
   },
   {
     "id": "60-fps",
