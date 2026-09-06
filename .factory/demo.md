@@ -18,8 +18,8 @@ and a finish gate.
 The persistent banner reads “Demo — sample data, nothing is saved”. Reset demo
 removes only sample state and recreates the 1–1 starting point. Leaving demo
 with Start for real, browser history, or a direct in-site route discards the
-sample namespace. Reloading `/demo` keeps the current sample only in its own
-history entry.
+sample namespace. Reloading `/demo` keeps the current sample only in the demo
+storage namespace.
 
 ## Isolation
 

@@ -139,19 +139,30 @@ test('plays a new best-of-five from entry through three rounds to the end screen
   await page.screenshot({ path: test.info().outputPath('full-match-end.png'), fullPage: true });
 });
 
-test('@claim:settings-persist saves accessibility and sound settings across reloads', async ({ page }) => {
-  await page.goto('/demo');
-  await page.getByRole('button', { name: 'Settings' }).click();
-  const dialog = page.getByRole('dialog', { name: 'Game settings' });
-  await dialog.getByRole('checkbox', { name: /Mute sound/ }).check();
-  await dialog.getByRole('checkbox', { name: /Movement effects/ }).uncheck();
-  await dialog.getByRole('checkbox', { name: /Edge assist/ }).check();
-  await dialog.getByRole('button', { name: 'Save settings' }).click();
-  await page.reload();
-  await page.getByRole('button', { name: 'Settings' }).click();
-  await expect(page.getByRole('checkbox', { name: /Mute sound/ })).toBeChecked();
-  await expect(page.getByRole('checkbox', { name: /Movement effects/ })).not.toBeChecked();
-  await expect(page.getByRole('checkbox', { name: /Edge assist/ })).toBeChecked();
+test('@claim:settings-persist keeps every demo setting after a browser reload', async ({ browser }, testInfo) => {
+  const trials = testInfo.project.name === 'webkit' ? 3 : 1;
+
+  for (let trial = 0; trial < trials; trial += 1) {
+    const context = await browser.newContext();
+    try {
+      const page = await context.newPage();
+      await page.goto('/demo');
+      await page.getByRole('button', { name: 'Settings' }).click();
+      const dialog = page.getByRole('dialog', { name: 'Game settings' });
+      await dialog.getByRole('checkbox', { name: /Mute sound/ }).check();
+      await dialog.getByRole('checkbox', { name: /Movement effects/ }).uncheck();
+      await dialog.getByRole('checkbox', { name: /Edge assist/ }).check();
+      await dialog.getByRole('button', { name: 'Save settings' }).click();
+
+      await page.reload();
+      await page.getByRole('button', { name: 'Settings' }).click();
+      await expect(page.getByRole('checkbox', { name: /Mute sound/ })).toBeChecked();
+      await expect(page.getByRole('checkbox', { name: /Movement effects/ })).not.toBeChecked();
+      await expect(page.getByRole('checkbox', { name: /Edge assist/ })).toBeChecked();
+    } finally {
+      await context.close();
+    }
+  }
 });
 
 test('@claim:mute-stops-tones stops game tones while preserving unmuted audio', async ({ browser }) => {

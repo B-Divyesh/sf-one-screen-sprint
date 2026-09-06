@@ -52,8 +52,8 @@
     "id": "settings-persist",
     "claim": "Mute, movement effects, and edge assist persist after reload.",
     "where": "settings, README",
-    "test": "npm run test:browser -- --grep=@claim:settings-persist",
-    "sandbox": "fresh /demo context; change all settings; reload; assert each saved state"
+    "test": "npm run test:settings-persist",
+    "sandbox": "fresh /demo contexts in Chromium, Firefox, and WebKit; change all settings; reload; assert each saved state, repeating the WebKit check three times"
   },
   {
     "id": "mute-stops-tones",

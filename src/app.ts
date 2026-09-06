@@ -16,13 +16,6 @@ const app: HTMLDivElement = appRoot;
 let controller: GameController | null = null;
 let focusHeadingAfterRender = false;
 
-interface DemoHistoryState {
-  demoSnapshot?: {
-    game: string | null;
-    settings: string | null;
-  };
-}
-
 const routeMeta: Record<string, { title: string; description: string }> = {
   '/': {
     title: 'One Screen Sprint — Race on one keyboard',
@@ -44,26 +37,6 @@ const routeMeta: Record<string, { title: string; description: string }> = {
 
 function isDemoRoute(): boolean {
   return location.pathname === '/demo' || new URLSearchParams(location.search).get('demo') === '1';
-}
-
-function saveDemoSnapshot(): void {
-  if (!isDemoRoute()) return;
-  const previous = (history.state ?? {}) as DemoHistoryState;
-  history.replaceState({
-    ...previous,
-    demoSnapshot: {
-      game: localStorage.getItem('demo:one-screen-sprint:game'),
-      settings: localStorage.getItem('demo:one-screen-sprint:settings'),
-    },
-  }, '', `${location.pathname}${location.search}${location.hash}`);
-}
-
-function restoreDemoSnapshotAfterReload(): void {
-  const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-  const snapshot = (history.state as DemoHistoryState | null)?.demoSnapshot;
-  if (navigation?.type !== 'reload' || !snapshot) return;
-  if (snapshot.game) localStorage.setItem('demo:one-screen-sprint:game', snapshot.game);
-  if (snapshot.settings) localStorage.setItem('demo:one-screen-sprint:settings', snapshot.settings);
 }
 
 function shell(content: string, demo = false): string {
@@ -311,7 +284,6 @@ function mountGame(demo: boolean): void {
   const updateUi = (nextState: GameState, urgent = false): void => {
     state = nextState;
     saveGame(demo, state);
-    if (demo) saveDemoSnapshot();
     const scoreOne = document.querySelector('#score-one');
     const scoreTwo = document.querySelector('#score-two');
     const roundLabel = document.querySelector('#round-label');
@@ -366,14 +338,12 @@ function mountGame(demo: boolean): void {
       const next = createGame(demo ? `CLUB-${Math.floor(Math.random() * 89) + 10}` : randomSeed(), false);
       next.demo = demo;
       saveGame(demo, next);
-      if (demo) saveDemoSnapshot();
       renderRoute();
     }
     if (action === 'replay-course') {
       const replay = createGame(state.seed, false);
       replay.demo = demo;
       saveGame(demo, replay);
-      if (demo) saveDemoSnapshot();
       renderRoute();
     }
   });
@@ -414,7 +384,6 @@ function openSettings(current: GameSettings, demo: boolean, onSave: (settings: G
     if (submitter?.value !== 'save' || !dialog.isConnected || demo !== isDemoRoute()) return;
     const next = { muted: muted.checked, effects: effects.checked, assist: assist.checked };
     saveSettings(demo, next);
-    if (demo) saveDemoSnapshot();
     onSave(next);
     const announcement = document.querySelector('#game-announcement');
     if (announcement) announcement.textContent = 'Settings saved.';
@@ -442,8 +411,7 @@ function renderRoute(): void {
   controller = null;
   const path = location.pathname.replace(/\/$/, '') || '/';
   const demo = isDemoRoute();
-  if (demo) restoreDemoSnapshotAfterReload();
-  else clearNamespace(true);
+  if (!demo) clearNamespace(true);
   setRouteMeta(demo ? '/demo' : path);
   if (path === '/' || path === '/demo') app.innerHTML = gamePage(demo);
   else if (path === '/privacy') app.innerHTML = privacyPage();
@@ -476,12 +444,6 @@ document.addEventListener('click', (event) => {
 window.addEventListener('popstate', () => {
   focusHeadingAfterRender = true;
   renderRoute();
-});
-
-window.addEventListener('pagehide', () => {
-  if (!isDemoRoute()) return;
-  saveDemoSnapshot();
-  clearNamespace(true);
 });
 
 window.addEventListener('pageshow', (event) => {

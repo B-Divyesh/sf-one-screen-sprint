@@ -39,10 +39,13 @@ requests. The game works offline after its first successful visit. See
 
 ## Run from a clean checkout
 
-Prerequisites: Node.js 22 and npm 10.
+Prerequisites: Node.js 22 and npm 10. The cross-browser settings claim also
+uses the Playwright Firefox and WebKit packages.
 
 ```sh
 npm ci
+npx playwright install chromium firefox webkit
+npx playwright install-deps firefox webkit
 npm run dev
 ```
 
@@ -56,8 +59,8 @@ npm run check
 
 This runs the copy audit, TypeScript production build, model tests, Playwright
 browser tests, accessibility checks, claim checks, and offline reload check.
-Playwright 1.58.2 is pinned. Its Chromium browser must be installed when the
-worker image does not provide it.
+Playwright 1.58.2 is pinned. The settings-persistence claim runs in Chromium,
+Firefox, and three fresh WebKit contexts.
 
 Individual commands:
 
@@ -65,7 +68,9 @@ Individual commands:
 npm run audit:copy
 npm run test:unit
 npm run test:browser
+npm run test:settings-persist
 npm run test:claims
+npm run verify:claims
 npm run build
 ```
 

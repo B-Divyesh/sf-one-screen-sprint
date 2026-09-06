@@ -10,6 +10,7 @@
     "test": "vitest run src && playwright test",
     "test:unit": "vitest run src",
     "test:browser": "playwright test",
+    "test:settings-persist": "playwright test --config=playwright.settings.config.ts",
     "test:claims": "npm run test:unit -- --testNamePattern=@claim: && npm run test:browser -- --grep=@claim:",
     "verify:claims": "node scripts/verify-claims.mjs",
     "audit:copy": "node scripts/audit-copy.mjs",
