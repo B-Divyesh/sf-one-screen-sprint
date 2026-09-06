@@ -1,0 +1,83 @@
+{
+  "base": "https://one-screen-sprint.sociobot.in",
+  "desktop": {
+    "firstScreen": {
+      "job": true,
+      "audience": false,
+      "action": true,
+      "canvas": true
+    }
+  },
+  "phone": {
+    "firstScreen": {
+      "job": true,
+      "action": true,
+      "canvas": true
+    },
+    "undersizedTargets": [],
+    "touchProgress": {
+      "before": 6,
+      "after": 38
+    }
+  },
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "h1": 1,
+      "main": 1,
+      "axe": []
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — One Screen Sprint",
+      "h1": 1,
+      "main": 1,
+      "axe": []
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — One Screen Sprint",
+      "h1": 1,
+      "main": 1,
+      "axe": []
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — One Screen Sprint",
+      "h1": 1,
+      "main": 1,
+      "axe": []
+    },
+    "/verify-6-missing": {
+      "status": 404,
+      "title": "Page not found — One Screen Sprint",
+      "h1": 1,
+      "main": 1,
+      "axe": []
+    }
+  },
+  "requests": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "run": {
+    "initial": {
+      "p1": "6",
+      "p2": "11"
+    },
+    "moved": {
+      "p1": "36",
+      "p2": "40"
+    },
+    "end": "Player 1 wins 3–1",
+    "bannerAtEnd": true,
+    "reset": {
+      "score1": "1",
+      "score2": "1",
+      "round": "Round 3 of 5",
+      "course": "Course CLUB-7"
+    },
+    "demoKeysAfterExit": []
+  }
+}

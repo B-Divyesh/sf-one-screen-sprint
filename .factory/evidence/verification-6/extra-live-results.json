@@ -1,0 +1,23 @@
+{
+  "skipLink": {
+    "text": "Skip to game and page content",
+    "href": "#main"
+  },
+  "skipTarget": "",
+  "dialog": true,
+  "dialogFocusReturn": true,
+  "privacyClear": {
+    "status": "Saved match and settings removed.",
+    "realKeys": []
+  },
+  "pause": true,
+  "pauseAfterReload": true,
+  "offline": {
+    "banner": true,
+    "canvas": true
+  },
+  "frame": {
+    "medianMs": 16.699999999999818,
+    "fps": 59.88023952095874
+  }
+}
