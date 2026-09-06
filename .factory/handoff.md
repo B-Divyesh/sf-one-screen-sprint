@@ -1,19 +1,29 @@
-# One Screen Sprint review 2 handoff
+# One Screen Sprint verification 7 handoff
 
 - Date: 2026-09-06 UTC
-- Work order: `one-screen-sprint-review-2`
-- Status: **PASS — 0 findings and 0 untested public claims**
+- Work order: `one-screen-sprint-verify-7`
+- Status: **FAIL — 1 finding and 0 untested public claims**
 - Live URL: <https://one-screen-sprint.sociobot.in>
 - Reviewed implementation: `d0f7313d5af0454d84c5a2936f9754fb2b25ca9b`
-- Documentation baseline: `0fbd9ecd2e423dbae3042d293815a51abc85f057`
+- Documentation baseline: `684251015f73962c3ca118d3756f5cb1b38cc5bc`
 
 ## What was verified
 
-Fresh desktop and phone browsers showed the game, job, audience, and sample action before scrolling. The live `CLUB-7` sample ran from 1–1 through the actual Player 1 3–1 end screen, kept its sample banner, reset to a 0–0 75-second new course, and Reset demo restored the original isolated sample. No cross-origin request or console error occurred during that flow.
+Chromium 145.0.7632.6, Firefox 146.0.1, and WebKit 26.0 each showed the game on
+fresh desktop and 390 × 844 phone-sized pages. Each live sample reached the
+actual Player 1 3–1 end screen, started native Web Audio after a user action,
+kept its demo label, reset correctly, and restored a paused match after reload.
+Both local players moved together in all three engines.
 
-The candidate passed `npm ci`, `npm run check`, and `npm audit --audit-level=moderate`: copy audit, build, 8 unit tests, 16 browser tests, and all 17 declared claim commands. Live shell, asset, service worker, 404, robots, and sitemap SHA-256 values match the candidate build. Live URL verification and independent Playwright axe checks passed on the app routes and 404; phone controls meet the 44 px requirement.
+The clean Chromium gate passed the build, 8 unit tests, 16 browser tests, and
+all 17 declared commands. Live route, axe, privacy, offline, 404, asset-parity,
+and 59.88 fps checks passed. There is no backend or online multiplayer.
 
-All 13 earlier findings (V1-01 through V5-01) remain fixed. Details and evidence paths are in `.factory/review-2.md`.
+## Finding
+
+WebKit 26.0 lost Mute, Movement effects, and Edge assist after every one of
+three `/demo` reload trials. This fails `settings-persist`. Details and all
+earlier finding dispositions are in `.factory/verification-7.md`.
 
 ## How to verify
 
@@ -23,8 +33,11 @@ npm run check
 npm audit --audit-level=moderate
 ```
 
-Open `/demo` for the isolated sample. The full review is `.factory/review-2.md`; screenshots and URL-verifier results are under `/work/.evidence/`.
+Cross-engine evidence is under `/work/.evidence/verification-7/`. The
+supplemental Firefox/WebKit runner config is stored there, outside the product
+repository.
 
-## Known gaps
+## Next step
 
-No product defects or untested public claims remain. Physical-device and field performance measurements are unavailable and not claimed. This static local game has no backend, tenant, room, database, health, restart, or rate-limit behavior to verify.
+Keep the deployed candidate unchanged. Repair demo settings reload behavior in
+WebKit, add Firefox and WebKit regression coverage, deploy, and verify again.
