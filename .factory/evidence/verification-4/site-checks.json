@@ -1,0 +1,153 @@
+{
+  "checkedAt": "2026-09-05T23:59:45.789Z",
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "One Screen Sprint — Race on one keyboard",
+      "lang": "en",
+      "h1": [
+        "Race a friend on one keyboard"
+      ],
+      "main": 1,
+      "canonical": "https://one-screen-sprint.sociobot.in/",
+      "description": "Race a friend through a 75-second obstacle course on one keyboard. First to three round wins takes the match.",
+      "hrefs": [
+        "https://one-screen-sprint.sociobot.in/#main",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/demo",
+        "https://one-screen-sprint.sociobot.in/#how-it-works",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/demo",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — One Screen Sprint",
+      "lang": "en",
+      "h1": [
+        "Race a friend on one keyboard"
+      ],
+      "main": 1,
+      "canonical": "https://one-screen-sprint.sociobot.in/demo",
+      "description": "Play a fixed sample match without changing your saved match or settings.",
+      "hrefs": [
+        "https://one-screen-sprint.sociobot.in/demo#main",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/demo",
+        "https://one-screen-sprint.sociobot.in/#how-it-works",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — One Screen Sprint",
+      "lang": "en",
+      "h1": [
+        "See what this game stores"
+      ],
+      "main": 1,
+      "canonical": "https://one-screen-sprint.sociobot.in/privacy",
+      "description": "How One Screen Sprint stores match progress and settings in your browser.",
+      "hrefs": [
+        "https://one-screen-sprint.sociobot.in/privacy#main",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/demo",
+        "https://one-screen-sprint.sociobot.in/#how-it-works",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "mailto:privacy@sociobot.in",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — One Screen Sprint",
+      "lang": "en",
+      "h1": [
+        "Play the game fairly and safely"
+      ],
+      "main": 1,
+      "canonical": "https://one-screen-sprint.sociobot.in/terms",
+      "description": "The terms for playing the free One Screen Sprint browser game.",
+      "hrefs": [
+        "https://one-screen-sprint.sociobot.in/terms#main",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/demo",
+        "https://one-screen-sprint.sociobot.in/#how-it-works",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "mailto:support@sociobot.in",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    },
+    "/verification-4-site-missing": {
+      "status": 404,
+      "title": "Page not found — One Screen Sprint",
+      "lang": "en",
+      "h1": [
+        "Find the race from the start"
+      ],
+      "main": 1,
+      "canonical": "https://one-screen-sprint.sociobot.in/",
+      "description": "Return to the One Screen Sprint local two-player browser game.",
+      "hrefs": [
+        "https://one-screen-sprint.sociobot.in/verification-4-site-missing#main",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/demo",
+        "https://one-screen-sprint.sociobot.in/#how-it-works",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/",
+        "https://one-screen-sprint.sociobot.in/privacy",
+        "https://one-screen-sprint.sociobot.in/terms",
+        "https://sociobot.in/"
+      ]
+    }
+  },
+  "links": {
+    "sameOrigin": {
+      "https://one-screen-sprint.sociobot.in/#main": 200,
+      "https://one-screen-sprint.sociobot.in/": 200,
+      "https://one-screen-sprint.sociobot.in/demo": 200,
+      "https://one-screen-sprint.sociobot.in/#how-it-works": 200,
+      "https://one-screen-sprint.sociobot.in/privacy": 200,
+      "https://one-screen-sprint.sociobot.in/terms": 200,
+      "https://one-screen-sprint.sociobot.in/demo#main": 200,
+      "https://one-screen-sprint.sociobot.in/privacy#main": 200,
+      "https://one-screen-sprint.sociobot.in/terms#main": 200,
+      "https://one-screen-sprint.sociobot.in/verification-4-site-missing#main": 404
+    },
+    "external": [
+      "https://sociobot.in/",
+      "mailto:privacy@sociobot.in",
+      "mailto:support@sociobot.in"
+    ]
+  },
+  "keyboard": {
+    "skipFocus": {
+      "focused": true,
+      "outlineWidth": "4px",
+      "outlineColor": "rgb(0, 95, 204)"
+    },
+    "settingsFocus": true,
+    "privacyFocus": true,
+    "backFocus": true
+  },
+  "privacy": {
+    "clearStatus": "Saved match and settings removed.",
+    "realKeys": []
+  },
+  "robots": 200,
+  "sitemap": 200,
+  "consoleErrors": []
+}

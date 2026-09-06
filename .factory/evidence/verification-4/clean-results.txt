@@ -1,0 +1,18 @@
+Clean verification checkout: bb74ec971a6398330588d8a3bd194224b6471b7b
+Date: 2026-09-06 UTC
+Runtime: Node.js 22.23.2, npm 10.9.8, Playwright 1.58.2
+
+npm ci: PASS (61 packages, 0 vulnerabilities)
+npm run check: PASS
+- copy audit: 65 lines passed
+- production build: PASS; dist/ created
+- JavaScript: 32.31 kB raw, 11.17 kB gzip
+- CSS: 12.17 kB raw, 3.51 kB gzip
+- unit tests: 8 passed
+- browser tests: 15 passed
+- all 17 declared claim commands: exited successfully when run separately
+npm audit --audit-level=moderate: PASS (0 vulnerabilities)
+
+Claim-review qualification: successful exit is not an acceptance verdict.
+The movement-effects and local-only commands have incomplete observable scope;
+see .factory/verification-4.md findings V4-01 and V4-02.
