@@ -1,0 +1,37 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "violations": [],
+    "homeMarkContrast": 4.915295104898606,
+    "fontSize": "15.2px"
+  },
+  {
+    "route": "/demo",
+    "status": 200,
+    "violations": [],
+    "homeMarkContrast": 4.915295104898606,
+    "fontSize": "15.2px"
+  },
+  {
+    "route": "/privacy",
+    "status": 200,
+    "violations": [],
+    "homeMarkContrast": 4.915295104898606,
+    "fontSize": "15.2px"
+  },
+  {
+    "route": "/terms",
+    "status": 200,
+    "violations": [],
+    "homeMarkContrast": 4.915295104898606,
+    "fontSize": "15.2px"
+  },
+  {
+    "route": "/404.html",
+    "status": 200,
+    "violations": [],
+    "homeMarkContrast": 4.915295104898606,
+    "fontSize": "15.2px"
+  }
+]

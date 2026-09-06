@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-09-06T01:26:57.360Z",
+  "contrast": [
+    {
+      "route": "/",
+      "status": 200,
+      "color": "rgb(255, 248, 233)",
+      "backgroundColor": "rgb(196, 60, 50)",
+      "fontSize": "15.2px",
+      "fontWeight": "400",
+      "contrastRatio": 4.915295104898606,
+      "requiredRatio": 4.5,
+      "passes": true
+    },
+    {
+      "route": "/demo",
+      "status": 200,
+      "color": "rgb(255, 248, 233)",
+      "backgroundColor": "rgb(196, 60, 50)",
+      "fontSize": "15.2px",
+      "fontWeight": "400",
+      "contrastRatio": 4.915295104898606,
+      "requiredRatio": 4.5,
+      "passes": true
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "color": "rgb(255, 248, 233)",
+      "backgroundColor": "rgb(196, 60, 50)",
+      "fontSize": "15.2px",
+      "fontWeight": "400",
+      "contrastRatio": 4.915295104898606,
+      "requiredRatio": 4.5,
+      "passes": true
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "color": "rgb(255, 248, 233)",
+      "backgroundColor": "rgb(196, 60, 50)",
+      "fontSize": "15.2px",
+      "fontWeight": "400",
+      "contrastRatio": 4.915295104898606,
+      "requiredRatio": 4.5,
+      "passes": true
+    },
+    {
+      "route": "/repair-5-missing",
+      "status": 404,
+      "color": "rgb(255, 248, 233)",
+      "backgroundColor": "rgb(196, 60, 50)",
+      "fontSize": "15.2px",
+      "fontWeight": "900",
+      "contrastRatio": 4.915295104898606,
+      "requiredRatio": 4.5,
+      "passes": true
+    }
+  ],
+  "serviceWorkerUpdate": {
+    "cachesAfterUpdate": [
+      "one-screen-sprint-v4"
+    ],
+    "obsoleteCacheRemoved": true,
+    "currentCachePresent": true,
+    "offlineBannerVisible": true,
+    "offlineCanvasVisible": true
+  }
+}
