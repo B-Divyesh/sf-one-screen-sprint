@@ -154,7 +154,11 @@ test('@claim:settings-persist keeps every demo setting after a browser reload', 
       await dialog.getByRole('checkbox', { name: /Edge assist/ }).check();
       await dialog.getByRole('button', { name: 'Save settings' }).click();
 
-      await page.reload();
+      const reloaded = page.waitForEvent('framenavigated', {
+        predicate: (frame) => frame === page.mainFrame(),
+      });
+      await page.evaluate(() => { window.location.reload(); });
+      await reloaded;
       await page.getByRole('button', { name: 'Settings' }).click();
       await expect(page.getByRole('checkbox', { name: /Mute sound/ })).toBeChecked();
       await expect(page.getByRole('checkbox', { name: /Movement effects/ })).not.toBeChecked();
