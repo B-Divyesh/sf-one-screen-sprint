@@ -6,7 +6,7 @@
 - Untested public claims: **0**
 - Live URL: <https://one-screen-sprint.sociobot.in>
 - Deployed implementation: `d0f7313d5af0454d84c5a2936f9754fb2b25ca9b`
-- Evidence and handoff baseline: `EVIDENCE_COMMIT`
+- Evidence and handoff baseline: `24a5ecf2d8551fefb76339626bcba4a79b5720c8`
 
 ## Outcome
 
